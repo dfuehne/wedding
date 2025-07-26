@@ -11,7 +11,7 @@ export default function Contact() {
 
         <div className="flex items-center justify-center min-h-screen bg-white">
             <div className="self-start mb-6">
-                <Button onClick={() => router.back()}>
+                <Button href="/" className="mr-3">
                     ← Back
                 </Button>
             </div>

@@ -10,7 +10,7 @@ export default function WeddingPartyPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
         <div className="self-start mb-6">
-            <Button onClick={() => router.back()}>
+            <Button href="/" className="mr-3">
                 ← Back
             </Button>
         </div>
