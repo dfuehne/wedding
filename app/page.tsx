@@ -4,7 +4,7 @@ import { Button } from "components/Button/Button"
 import { LP_GRID_ITEMS } from "lp-items"
 
 export const metadata: Metadata = {
-  title: "Zoe Baker and Duncan Fuehne Wedding!",
+  title: "Zoe Baker and Duncan Fuehne Wedding Website!",
 }
 
 export default function Web() {
