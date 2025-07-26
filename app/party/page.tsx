@@ -1,11 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { Button } from 'components/Button/Button';
 
 export default function WeddingPartyPage() {
   const partyPeople = ["Molly", "Kendall", "Dani", "Zach"];
-  const router = useRouter();
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
