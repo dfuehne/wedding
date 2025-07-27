@@ -1,3 +1,11 @@
+Run in development mode:
+npm run rev
+
+Build project:
+pnpm run build
+
+
+
 
 # [Next.js Enterprise Boilerplate](https://blazity.com/open-source/nextjs-enterprise-boilerplate) 
 
