@@ -6,19 +6,21 @@ export default function WeddingPartyPage() {
   const partyPeople = ["Molly", "Kendall", "Dani", "Zach"];
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="self-start mb-6">
-            <Button href="/" className="mr-3">
-                ← Back
-            </Button>
-        </div>
-      <ul className="space-y-4 text-center text-lg font-medium">
-        {partyPeople.map((item, idx) => (
-          <li key={idx} className="text-gray-700">
-            {item}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <div className="mb-6">
+        <Button href="/" className="mr-3">
+          ← Back
+        </Button>
+      </div>
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <ul className="space-y-4 text-center text-lg font-medium">
+          {partyPeople.map((item, idx) => (
+            <li key={idx} className="text-gray-700">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
