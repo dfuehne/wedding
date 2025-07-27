@@ -12,9 +12,10 @@ export async function generateStaticParams() {
 export default async function StatePage({
   params,
 }: {
-  params: { state: string };
+  params: Promise<{ state: string }>;
 }) {
-  const state = params.state;
+  const resolvedParams = await params;  // <-- await here!
+  const state = resolvedParams.state;
 
   const imagesDir = path.join(process.cwd(), 'public', state);
 

@@ -12,7 +12,16 @@ export default function GalleryPage() {
   useEffect(() => {
     fetch('/api/statesWithImages')
       .then((res) => res.json())
-      .then((data) => setStatesWithImages(data))
+      .then((data: unknown) => {
+        if (
+          Array.isArray(data) &&
+          data.every((item) => typeof item === 'string')
+        ) {
+          setStatesWithImages(data);
+        } else {
+          console.error('Invalid data format for statesWithImages:', data);
+        }
+      })
       .catch((err) => console.error('Error loading states:', err));
   }, []);
 
