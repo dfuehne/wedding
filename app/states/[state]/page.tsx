@@ -3,27 +3,23 @@ import path from 'path';
 import Link from 'next/link';
 import { formatStateName } from '@/lib/utils';
 
-interface StatePageProps {
-  params: {
-    state: string;
-  };
-}
-
 // This function runs on the server during build or request time
 export async function generateStaticParams() {
-  // Optionally, generate all params for SSG
   return [];
 }
 
-export default async function StatePage({ params }: StatePageProps) {
+// ✅ Keep it inline-typed — no extra interface
+export default async function StatePage({
+  params,
+}: {
+  params: { state: string };
+}) {
   const state = params.state;
 
-  // Path to public folder subdirectory
   const imagesDir = path.join(process.cwd(), 'public', state);
 
   let images: string[] = [];
   try {
-    // Read files from the state's public folder
     images = fs.readdirSync(imagesDir).filter(file =>
       /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
     );
@@ -34,7 +30,10 @@ export default async function StatePage({ params }: StatePageProps) {
   return (
     <div>
       <div className="mb-6">
-        <Link href="/gallery" className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
+        <Link
+          href="/gallery"
+          className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+        >
           ← Back
         </Link>
       </div>
