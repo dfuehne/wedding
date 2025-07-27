@@ -1,7 +1,13 @@
 Run in development mode:
+
 npm run rev
 
+then click urls given to open in browser
+
+
+
 Build project:
+
 pnpm run build
 
 
