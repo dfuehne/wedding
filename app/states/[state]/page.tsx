@@ -1,11 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { Button } from 'components/Button/Button';
+import Link from 'next/link';
 import { formatStateName } from '@/lib/utils';
 
-interface Props {
-  params: { state: string };
-  images: string[];
+interface StatePageProps {
+  params: {
+    state: string;
+  };
 }
 
 // This function runs on the server during build or request time
@@ -14,8 +15,7 @@ export async function generateStaticParams() {
   return [];
 }
 
-// Server component with async
-export default async function StatePage({ params }: { params: { state: string } }) {
+export default async function StatePage({ params }: StatePageProps) {
   const state = params.state;
 
   // Path to public folder subdirectory
@@ -34,12 +34,14 @@ export default async function StatePage({ params }: { params: { state: string } 
   return (
     <div>
       <div className="mb-6">
-        <Button href="/gallery" className="mr-3">
+        <Link href="/gallery" className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
           ← Back
-        </Button>
+        </Link>
       </div>
       <div className="p-6">
-        <h1 className="text-3xl font-bold">Zoe and Duncan's Adventures in {formatStateName(state)}!</h1>
+        <h1 className="text-3xl font-bold">
+          Zoe and Duncan&apos;s Adventures in {formatStateName(state)}!
+        </h1>
 
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.length > 0 ? (
