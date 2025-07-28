@@ -17,7 +17,7 @@ export default async function StatePage({
   const resolvedParams = await params;  // <-- await here!
   const state = resolvedParams.state;
 
-  const imagesDir = path.join(process.cwd(), 'public', state);
+  const imagesDir = path.join(process.cwd(), 'public/locations', state);
 
   let images: string[] = [];
   try {
@@ -48,7 +48,7 @@ export default async function StatePage({
             images.map((imgName) => (
               <img
                 key={imgName}
-                src={`/${state}/${imgName}`}
+                src={`/locations/${state}/${imgName}`}
                 alt={`${state} image ${imgName}`}
                 className="rounded shadow"
                 loading="lazy"

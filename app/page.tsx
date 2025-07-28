@@ -22,6 +22,9 @@ export default function Web() {
             <Button href="party" className="mr-3">
               Wedding Party
             </Button>
+            <Button href="proposal" className="mr-3">
+              Proposal
+            </Button>
           </div>
         </div>
       </section>
