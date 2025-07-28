@@ -34,3 +34,6 @@ storybook-static/
 /playwright/.cache/
 
 /.npm-only-allow
+
+# version control
+package-lock.json
