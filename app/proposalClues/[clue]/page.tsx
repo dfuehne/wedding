@@ -17,11 +17,11 @@ export default async function CluePage({
   const resolvedParams = await params;  // <-- await here!
   const clue = resolvedParams.clue;
 
-  const imagesDir = path.join(process.cwd(), 'public/clues', clue);
+  const clueDir = path.join(process.cwd(), 'public/clues', clue);
 
   let images: string[] = [];
   try {
-    images = fs.readdirSync(imagesDir).filter(file =>
+    images = fs.readdirSync(clueDir).filter(file =>
       /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
     );
   } catch (error) {
@@ -38,7 +38,14 @@ export default async function CluePage({
           ← Back
         </Link>
       </div>
-      <div className="p-6">
+      <div className="relative w-full max-w-4xl mx-auto">
+        <img
+          src={`/clues/${clue}/clue.pdf`}
+          alt={`/clues/${clue}/clue.pdf`}
+          className="w-full h-auto"
+        />
+      </div>
+      {/* <div className="p-6">
         <h1 className="text-3xl font-bold">
           {formatClueName(clue)}:
         </h1>
@@ -58,7 +65,7 @@ export default async function CluePage({
             <p>No images found for {clue}.</p>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
