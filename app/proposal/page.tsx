@@ -15,7 +15,7 @@ export default function ProposalPage() {
     { id: '4', x: 68.4, y: 86.9, label: 'Clue 4', link: '/proposalClues/clue-4' },
     { id: '5', x: 60.5, y: 96.2, label: 'Clue 5', link: '/proposalClues/clue-5' },
     { id: '6', x: 73.4, y: 86.9, label: 'Clue 6', link: '/proposalClues/clue-6' },
-    { id: '7', x: 64.8, y: 79.6, label: 'Clue 7, Proposal', link: '/proposalClues/clue-7' },
+    { id: '7', x: 64.8, y: 79.7, label: 'Clue 7, Proposal', link: '/proposalClues/clue-7' },
   ];
 
   return (
