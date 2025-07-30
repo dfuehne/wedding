@@ -16,7 +16,7 @@ export default async function GroomsmenPage({
   const resolvedParams = await params;  // <-- await here!
   const groomsmanName = resolvedParams.groomsman;
 
-  const imageList: string[] = await getImageList(`public/weddingParty/${groomsmanName}/`);
+  const imageList: string[] = await getImageList(`weddingParty/${groomsmanName}/`);
 
   return (
     <div>
