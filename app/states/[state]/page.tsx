@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import { formatStateName } from '@/lib/utils';
+import { formatStateName } from '@/lib/utilsClient';
 
 // This function runs on the server during build or request time
 export async function generateStaticParams() {

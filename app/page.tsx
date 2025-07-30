@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import { Button } from "components/Button/Button"
 
-import { LP_GRID_ITEMS } from "lp-items"
 
 export const metadata: Metadata = {
   title: "Zoe Baker and Duncan Fuehne Wedding Website!",

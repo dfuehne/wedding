@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { transformGeoJson } from '@/lib/utils';
+import { transformGeoJson } from '@/lib/utilsClient';
 import type { FeatureCollection } from 'geojson';
 
 

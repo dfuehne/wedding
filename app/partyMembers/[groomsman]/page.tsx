@@ -1,7 +1,6 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
-import { formatPersonName } from '@/lib/utils'
+import { formatPersonName } from '@/lib/utilsClient'
+import { getImageList } from '@/lib/utilsServer'
 
 // This function runs on the server during build or request time
 export async function generateStaticParams() {
@@ -15,18 +14,9 @@ export default async function GroomsmenPage({
   params: Promise<{ groomsman: string }>;
 }) {
   const resolvedParams = await params;  // <-- await here!
-  const groomsman = resolvedParams.groomsman;
+  const groomsmanName = resolvedParams.groomsman;
 
-  const imagesDir = path.join(process.cwd(), 'public/weddingParty', groomsman);
-
-  let images: string[] = [];
-  try {
-    images = fs.readdirSync(imagesDir).filter(file =>
-      /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
-    );
-  } catch (error) {
-    console.warn(`Could not read images for groomsman "${groomsman}":`, error);
-  }
+  const imageList: string[] = await getImageList(`public/weddingParty/${groomsmanName}/`);
 
   return (
     <div>
@@ -40,22 +30,22 @@ export default async function GroomsmenPage({
       </div>
       <div className="p-6">
         <h1 className="text-3xl font-bold">
-          {formatPersonName(groomsman)}!
+          {formatPersonName(groomsmanName)}!
         </h1>
 
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {images.length > 0 ? (
-            images.map((imgName) => (
+          {imageList.length > 0 ? (
+            imageList.map((imgName) => (
               <img
                 key={imgName}
-                src={`/weddingParty/${groomsman}/${imgName}`}
-                alt={`${groomsman} image ${imgName}`}
+                src={`/weddingParty/${groomsmanName}/${imgName}`}
+                alt={`${groomsmanName} image ${imgName}`}
                 className="rounded shadow"
                 loading="lazy"
               />
             ))
           ) : (
-            <p>No images found for {groomsman}.</p>
+            <p>No images found for {groomsmanName}.</p>
           )}
         </div>
       </div>

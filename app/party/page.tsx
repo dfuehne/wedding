@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
-import { formatPersonName } from '@/lib/utils'
+import { formatPersonName } from '@/lib/utilsClient'
 
 export default function WeddingPartyPage() {
   const [weddingPartyWithInfo, setWeddingPartyWithInfo] = useState<string[]>([]);
