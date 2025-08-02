@@ -38,11 +38,14 @@ export default function ProposalPage() {
   return (
     <div>
       {/* Back button */}
-      <div className="mb-6">
-        <Button href="/" className="mr-3">
-          ← Back
-        </Button>
-      </div>
+<div className="mb-6 flex">
+  <Button href="/" className="inline-flex mr-3">
+    ← Back
+  </Button>
+  <Button href="/engagementPhotos" className="inline-flex">
+    Just Show Me The Engagement Pictures
+  </Button>
+</div>
 
       {/* Scrollable Buttons */}
       <div className="overflow-x-auto mb-4 z-10 relative">
