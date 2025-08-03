@@ -1,7 +1,7 @@
 import { Button } from "components/Button/Button"
-import { Cookie } from 'next/font/google';
+import { Pinyon_Script } from 'next/font/google';
 
-const fancyFont = Cookie({weight: '400' });
+const fancyFont = Pinyon_Script({subsets: ['latin'], weight: '400' });
 
 export default function Web() {
 
@@ -18,7 +18,7 @@ export default function Web() {
             />
             
 <h1 className={`mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl ${fancyFont.className}`}>
-              ZOE + DUNCAN
+              Zoe + Duncan
             </h1>
 
             <Button href="gallery" className="mr-3">
