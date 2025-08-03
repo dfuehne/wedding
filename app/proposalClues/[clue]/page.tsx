@@ -76,7 +76,7 @@ export default function CluePage(){
     <div>
       <div className="mb-6 flex items-center justify-between">
         <Link
-          href="/proposal"
+          href={`/proposal?focusedClue=${clue}`}
           className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
         >
           ← Back
