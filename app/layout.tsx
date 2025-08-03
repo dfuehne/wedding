@@ -1,4 +1,12 @@
 import "styles/tailwind.css"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Zoe Baker and Duncan Fuehne Wedding Website!",
+  icons: {
+    icon: "logo.png",
+  },
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

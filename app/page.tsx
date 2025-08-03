@@ -1,10 +1,5 @@
-import { Metadata } from "next"
 import { Button } from "components/Button/Button"
 
-
-export const metadata: Metadata = {
-  title: "Zoe Baker and Duncan Fuehne Wedding Website!",
-}
 
 export default function Web() {
   return (
@@ -20,7 +15,7 @@ export default function Web() {
             />
             
             <h1 className="mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl">
-              Zoe Baker and Duncan Fuehne Wedding!
+              Zoe and Duncan
             </h1>
 
             <Button href="gallery" className="mr-3">
