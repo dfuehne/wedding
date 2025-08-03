@@ -50,14 +50,22 @@ export default function ProposalPage() {
   return (
     <div>
       {/* Back button */}
-<div className="mb-6 flex">
-  <Button href="/" className="inline-flex mr-3">
-    ← Back
-  </Button>
-  <Button href="/engagementPhotos" className="inline-flex">
-    Just Show Me The Engagement Pictures
-  </Button>
-</div>
+      <div className="mb-6 flex">
+        <Button href="/" className="inline-flex mr-3">
+          ← Back
+        </Button>
+        <Button href="/engagementPhotos" className="ml-3">
+          Just Show Me The Engagement Pictures
+        </Button>
+      </div>
+      <div className="mx-auto max-w-3xl text-center">
+        {/* Logo */}
+        <img
+          src="logo.png"
+          alt="Wedding Logo"
+          className="mx-auto mb-6 w-32 h-auto"
+        />
+      </div>
 
       {/* Scrollable Buttons */}
       <div className="overflow-x-auto mb-4 z-10 relative">
@@ -70,18 +78,18 @@ export default function ProposalPage() {
               }}
               onClick={() => handleFocus(index)}
               className={`px-3 py-1 rounded-full border text-sm whitespace-nowrap transition-all
-                ${index === focusedIndex ? 'bg-black text-white' : 'bg-white text-black border-gray-300'}`}
+                ${index === focusedIndex ? 'bg-[rgb(122,82,85)] text-[rgb(247,242,237)]' : 'border-[rgb(122,82,85)]'}`}
             >
               {pin.label}
             </button>
           ))}
         </div>
       </div>
-
-      {/* instruction text */}
-      <p className="text-center text-sm mb-4 text-gray-700">
-        Click on the green clue location to play!
-      </p>
+<div className="mb-6 flex items-center">
+  <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+    Click on the Highlighted Clue to Play!
+  </h1>
+</div>
 
       {/* Map + Zoomed Pins */}
       <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
@@ -98,36 +106,6 @@ export default function ProposalPage() {
               alt="Catalina Map"
               className="w-full h-auto"
             />
-
-            {/* {focusedIndex > 0 && (() => {
-              const prevPin = pins[focusedIndex - 1];
-              const currPin = focusedPin;
-
-              // Pin positions in percentage (as per your layout)
-              const x1 = prevPin.x;
-              const y1 = prevPin.y;
-              const x2 = currPin.x;
-              const y2 = currPin.y;
-
-              return (
-                <svg
-                  className="absolute left-0 top-0 w-full h-full pointer-events-none"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  <line
-                    x1={x1 + 0.25 / currPin.zoom}
-                    y1={y1 + 0.25 / currPin.zoom}
-                    x2={x2}// + 0.25 / currPin.zoom}
-                    y2={y2}// + 0.25 / currPin.zoom}
-                    stroke="blue"
-                    strokeWidth="0.1"
-                    strokeDasharray="1 1"
-                    markerEnd="url(#arrowhead)"
-                  />
-                </svg>
-              );
-            })()} */}
 
             {pins.map((pin, index) => {
               if (Math.abs(index + 0.5 - focusedIndex) > 1) return null;
@@ -150,12 +128,12 @@ export default function ProposalPage() {
                   >
                   {/* Pin dot (centered) */}
                   <div
-                    className={`w-4 h-4 rounded-full border-2 border-white transition transform -translate-x-1/2 -translate-y-1/2
-                      ${index === focusedIndex ? 'bg-green-500 scale-125 z-50' : 'bg-red-600'}`}
+                    className={`w-4 h-4 rounded-full border-2 transition transform -translate-x-1/2 -translate-y-1/2
+                      ${index === focusedIndex ? 'bg-[rgb(122,82,85)] scale-125 z-50 border-[rgb(247,242,237)]' : 'bg-[#FFF] border-[#DDD]'}`}
                   />
 
                   {/* Label to the right of the pin */}
-              <div className="absolute right-full top-1/2 -translate-y-5 -translate-x-3 ml-2 px-2 py-1 text-xs bg-black text-white rounded-lg shadow-md whitespace-nowrap">
+              <div className="absolute right-full top-1/2 -translate-y-5 -translate-x-3 ml-2 px-2 py-1 text-xs bg-[rgb(122,82,85)] text-[rgb(247,242,237)] rounded-lg shadow-md whitespace-nowrap">
                 {pin.label}
               </div>
                 </div>

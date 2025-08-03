@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { UnknownKeysParam } from 'zod';
+import { Button } from "components/Button/Button"
 
 type BlobItem = {
   url: string;
@@ -54,12 +53,17 @@ export default function StatePage() {
   return (
     <div>
       <div className="mb-6">
-        <Link
-          href="/proposal"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
-        >
-          ← Back
-        </Link>
+            <Button href="/proposal" className="mr-3">
+              ← Back
+            </Button>
+      </div>
+      <div className="mx-auto max-w-3xl text-center">
+                {/* Logo */}
+                <img
+                  src="../logo.png"
+                  alt="Wedding Logo"
+                  className="mx-auto mb-6 w-32 h-auto"
+                />
       </div>
       <div className="p-6">
         {error && <p className="text-red-600">{error}</p>}

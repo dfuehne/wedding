@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Link from 'next/link';
+import { Button } from "components/Button/Button"
 import { formatClueName } from '@/lib/utilsClient'
 
 type ApiResponse = { files: string[] } | { error: string };
@@ -70,17 +70,14 @@ export default function CluePage(){
 
   const tabBtn = (active: boolean) =>
     `px-4 py-2 rounded-md text-sm font-medium border transition
-     ${active ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'}`;
+     ${active ? 'bg-[rgb(122,82,85)] text-[rgb(247,242,237)]' : 'text-[rgb(122,82,85)] border-[rgb(122,82,85)] hover:bg-gray-100'}`;
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <Link
-          href={`/proposal?focusedClue=${clue}`}
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
-        >
+        <Button href={`/proposal?focusedClue=${clue}`} className="mr-3">
           ← Back
-        </Link>
+        </Button>
 
         <div role="tablist" aria-label="Clue content" className="space-x-2">
           <button
@@ -117,8 +114,17 @@ export default function CluePage(){
 
         </div>
       </div>
-
-      <h1 className="text-3xl font-bold mb-4">{formatClueName(String(clue))}:</h1>
+              <div className="mx-auto max-w-3xl text-center">
+                {/* Logo */}
+                <img
+                  src="../logo.png"
+                  alt="Wedding Logo"
+                  className="mx-auto mb-6 w-32 h-auto"
+                  />
+                <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+                  {formatClueName(String(clue))}:
+                </h1>
+              </div>
 
       {/* ==== CLUE (PDF) — styled like your <img> (rounded, shadow, responsive) ==== */}
       {view === 'clue' && (
