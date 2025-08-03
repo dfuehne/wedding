@@ -1,7 +1,10 @@
 import { Button } from "components/Button/Button"
+import { Cookie } from 'next/font/google';
 
+const fancyFont = Cookie({weight: '400' });
 
 export default function Web() {
+
   return (
     <>
       <section>
@@ -14,8 +17,8 @@ export default function Web() {
               className="mx-auto mb-6 w-32 h-auto"
             />
             
-            <h1 className="mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl">
-              Zoe and Duncan
+<h1 className={`mb-4 max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl ${fancyFont.className}`}>
+              ZOE + DUNCAN
             </h1>
 
             <Button href="gallery" className="mr-3">
