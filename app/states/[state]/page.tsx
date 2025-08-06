@@ -46,7 +46,7 @@ export default async function StatePage({
           <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
             Zoe and Duncan&apos;s Adventures in {formatStateName(state)}!
           </h1>
-      </div>
+        </div>
 
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.length > 0 ? (
