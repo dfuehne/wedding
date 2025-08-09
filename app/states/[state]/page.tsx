@@ -3,6 +3,7 @@ import path from 'path';
 import Link from 'next/link';
 import { formatStateName } from '@/lib/utils';
 
+
 // This function runs on the server during build or request time
 export async function generateStaticParams() {
   return [];
@@ -21,9 +22,10 @@ export default async function StatePage({
 
   let images: string[] = [];
   try {
-    images = fs.readdirSync(imagesDir).filter(file =>
-      /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
-    );
+    images = (await fs.promises.readdir(imagesDir)).filter(file => {
+      const filePath = path.join(imagesDir, file);
+      return /\.(jpg|jpeg|png|gif|webp)$/i.test(filePath);
+    });
   } catch (error) {
     console.warn(`Could not read images for state "${state}":`, error);
   }
