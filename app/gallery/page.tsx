@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { transformGeoJson } from '@/lib/utils';
+import { transformGeoJson } from '@/lib/utilsClient';
 import type { FeatureCollection } from 'geojson';
 
 
@@ -93,13 +93,23 @@ export default function GalleryPage() {
           ← Back
         </Button>
       </div>
-      <h1 className="text-2xl font-bold mb-4">Gallery: Click on a Green State!</h1>
+      <div className="mx-auto max-w-3xl text-center">
+        {/* Logo */}
+        <img
+          src="logo.png"
+          alt="Wedding Logo"
+          className="mx-auto mb-6 w-32 h-auto"
+        />
+      <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+          Gallery: Click on a Hghlighted State!
+        </h1>
+      </div>
 
       <ComposableMap
         projection="geoAlbersUsa"
         width={800}
         height={500}
-        style={{ maxWidth: '50%', height: 'auto' }}
+        style={{ maxWidth: '100%', height: 'auto' }}
       >
         {/* US States */}
         <Geographies geography={geoUSUrl}>
@@ -122,20 +132,20 @@ export default function GalleryPage() {
                   onMouseLeave={() => setTooltipContent(null)}
                   style={{
                     default: {
-                      fill: hasImages ? '#a8e6a3' : '#DDD',
+                      fill: hasImages ? 'rgb(122,82,85)' : '#DDD',
                       stroke: '#FFF',
                       strokeWidth: 0.5,
                       outline: 'none',
                       cursor: hasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                      fill: hasImages ? '#82ca9d' : '#CCC',
+                      fill: hasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
                       stroke: '#FFF',
                       strokeWidth: 1,
                       outline: 'none',
                     },
                     pressed: {
-                      fill: hasImages ? '#69c0a8' : '#BBB',
+                      fill: hasImages ? 'rgb(122,82,85)' : '#BBB',
                       outline: 'none',
                     },
                   }}
@@ -168,20 +178,20 @@ export default function GalleryPage() {
                   onMouseLeave={() => setTooltipContent(null)}
                   style={{
                     default: {
-                      fill: hasImages ? '#a8e6a3' : '#DDD',
+                      fill: hasImages ? 'rgb(122,82,85)' : '#DDD',
                       stroke: '#FFF',
                       strokeWidth: 0.5,
                       outline: 'none',
                       cursor: hasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                      fill: hasImages ? '#82ca9d' : '#CCC',
+                      fill: hasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
                       stroke: '#FFF',
                       strokeWidth: 1,
                       outline: 'none',
                     },
                     pressed: {
-                      fill: hasImages ? '#69c0a8' : '#BBB',
+                      fill: hasImages ? 'rgb(122,82,85)' : '#BBB',
                       outline: 'none',
                     },
                   }}
@@ -209,20 +219,20 @@ export default function GalleryPage() {
                     onMouseLeave={() => setTooltipContent(null)}
                     style={{
                     default: {
-                        fill: italyHasImages ? '#a8e6a3' : '#DDD',
+                        fill: italyHasImages ? 'rgb(122,82,85)' : '#DDD',
                         stroke: '#FFF',
                         strokeWidth: 0.5,
                         outline: 'none',
                         cursor: italyHasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                        fill: italyHasImages ? '#82ca9d' : '#CCC',
+                        fill: italyHasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
                         stroke: '#FFF',
                         strokeWidth: 1,
                         outline: 'none',
                     },
                     pressed: {
-                        fill: italyHasImages ? '#69c0a8' : '#BBB',
+                        fill: italyHasImages ? 'rgb(122,82,85)' : '#BBB',
                         outline: 'none',
                     },
                     }}
@@ -251,20 +261,20 @@ export default function GalleryPage() {
                     onMouseLeave={() => setTooltipContent(null)}
                     style={{
                     default: {
-                        fill: belizeHasImages ? '#a8e6a3' : '#DDD',
+                        fill: belizeHasImages ? 'rgb(122,82,85)' : '#DDD',
                         stroke: '#FFF',
                         strokeWidth: 0.5,
                         outline: 'none',
                         cursor: belizeHasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                        fill: belizeHasImages ? '#82ca9d' : '#CCC',
+                        fill: belizeHasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
                         stroke: '#FFF',
                         strokeWidth: 1,
                         outline: 'none',
                     },
                     pressed: {
-                        fill: belizeHasImages ? '#69c0a8' : '#BBB',
+                        fill: belizeHasImages ? 'rgb(122,82,85)' : '#BBB',
                         outline: 'none',
                     },
                     }}

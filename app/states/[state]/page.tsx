@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import Link from 'next/link';
-import { formatStateName } from '@/lib/utils';
+import { Button } from "components/Button/Button"
+import { formatStateName } from '@/lib/utilsClient';
 
 
 // This function runs on the server during build or request time
@@ -33,17 +33,22 @@ export default async function StatePage({
   return (
     <div>
       <div className="mb-6">
-        <Link
-          href="/gallery"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
-        >
+        <Button href="/gallery" className="mr-3">
           ← Back
-        </Link>
+        </Button>
       </div>
       <div className="p-6">
-        <h1 className="text-3xl font-bold">
-          Zoe and Duncan&apos;s Adventures in {formatStateName(state)}!
-        </h1>
+        <div className="mx-auto max-w-3xl text-center">
+          {/* Logo */}
+          <img
+            src="../logo.png"
+            alt="Wedding Logo"
+            className="mx-auto mb-6 w-32 h-auto"
+            />
+          <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+            Zoe and Duncan&apos;s Adventures in {formatStateName(state)}!
+          </h1>
+        </div>
 
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {images.length > 0 ? (

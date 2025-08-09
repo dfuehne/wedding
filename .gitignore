@@ -37,3 +37,4 @@ storybook-static/
 
 # version control
 package-lock.json
+.vercel

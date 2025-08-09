@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority"
-
 import { twMerge } from "tailwind-merge"
 
 const button = cva(
@@ -10,15 +9,25 @@ const button = cva(
     "rounded-xl",
     "text-center",
     "border",
-    "border-blue-400",
     "transition-colors",
     "delay-50",
   ],
   {
     variants: {
       intent: {
-        primary: ["bg-blue-400", "text-white", "hover:enabled:bg-blue-700"],
-        secondary: ["bg-transparent", "text-blue-400", "hover:enabled:bg-blue-400", "hover:enabled:text-white"],
+        primary: [
+          "bg-[rgb(122,82,85)]",       // background = default text color
+          "text-[rgb(247,242,237)]",   // text = default background color
+          "border-[rgb(122,82,85)]",
+          "hover:enabled:bg-[rgb(100,70,75)]",  // slightly darker hover bg
+        ],
+        secondary: [
+          "bg-transparent",
+          "text-[rgb(122,82,85)]",  // text uses default text color
+          "border-[rgb(122,82,85)]",
+          "hover:enabled:bg-[rgb(247,242,237)]", // hover bg = default background color
+          "hover:enabled:text-[rgb(122,82,85)]",
+        ],
       },
       size: {
         sm: ["min-w-20", "h-full", "min-h-10", "text-sm", "py-1.5", "px-4"],
@@ -40,7 +49,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLAnchorElemen
 
 export function Button({ className, intent, size, underline, ...props }: ButtonProps) {
   return (
-    <a className={twMerge(button({ intent, size, className, underline }))} {...props}>
+    <a className={twMerge(button({ intent, size, underline, className }))} {...props}>
       {props.children}
     </a>
   )

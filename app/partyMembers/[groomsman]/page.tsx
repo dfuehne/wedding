@@ -1,7 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import { formatPersonName } from '@/lib/utils'
+import { Button } from "components/Button/Button"
+import { formatPersonName } from '@/lib/utilsClient'
+import { getImageList } from '@/lib/utilsServer'
 
 // This function runs on the server during build or request time
 export async function generateStaticParams() {
@@ -15,47 +14,43 @@ export default async function GroomsmenPage({
   params: Promise<{ groomsman: string }>;
 }) {
   const resolvedParams = await params;  // <-- await here!
-  const groomsman = resolvedParams.groomsman;
+  const groomsmanName = resolvedParams.groomsman;
 
-  const imagesDir = path.join(process.cwd(), 'public/weddingParty', groomsman);
-
-  let images: string[] = [];
-  try {
-    images = fs.readdirSync(imagesDir).filter(file =>
-      /\.(jpg|jpeg|png|gif|webp)$/i.test(file)
-    );
-  } catch (error) {
-    console.warn(`Could not read images for groomsman "${groomsman}":`, error);
-  }
+  const imageList: string[] = await getImageList(`weddingParty/${groomsmanName}/`);
 
   return (
     <div>
       <div className="mb-6">
-        <Link
-          href="/party"
-          className="inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
-        >
+        <Button href="/party" className="mr-3">
           ← Back
-        </Link>
+        </Button>
       </div>
       <div className="p-6">
-        <h1 className="text-3xl font-bold">
-          {formatPersonName(groomsman)}!
-        </h1>
+        <div className="mx-auto max-w-3xl text-center">
+          {/* Logo */}
+          <img
+            src="../logo.png"
+            alt="Wedding Logo"
+            className="mx-auto mb-6 w-32 h-auto"
+          />
+          <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+            {formatPersonName(groomsmanName)}!
+          </h1>
+        </div>
 
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {images.length > 0 ? (
-            images.map((imgName) => (
+          {imageList.length > 0 ? (
+            imageList.map((imgName) => (
               <img
                 key={imgName}
-                src={`/weddingParty/${groomsman}/${imgName}`}
-                alt={`${groomsman} image ${imgName}`}
+                src={`/weddingParty/${groomsmanName}/${imgName}`}
+                alt={`${groomsmanName} image ${imgName}`}
                 className="rounded shadow"
                 loading="lazy"
               />
             ))
           ) : (
-            <p>No images found for {groomsman}.</p>
+            <p>No images found for {groomsmanName}.</p>
           )}
         </div>
       </div>

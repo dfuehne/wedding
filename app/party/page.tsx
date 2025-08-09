@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
-import { formatPersonName } from '@/lib/utils'
+import { formatPersonName } from '@/lib/utilsClient'
 
 export default function WeddingPartyPage() {
   const [weddingPartyWithInfo, setWeddingPartyWithInfo] = useState<string[]>([]);
@@ -30,8 +30,17 @@ export default function WeddingPartyPage() {
           ← Back
         </Button>
       </div>
-      <div className="flex items-center justify-center min-h-screen bg-white">
-        <ul className="space-y-4 text-center text-lg font-medium">
+      <div className="mx-auto max-w-3xl text-center">
+        {/* Logo */}
+        <img
+          src="logo.png"
+          alt="Wedding Logo"
+          className="mx-auto mb-6 w-32 h-auto"
+        />
+        <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+          Wedding Party!
+        </h1>
+        <ul className="space-y-4 text-lg font-medium">
           {weddingPartyWithInfo.map((item) => (
             <li key={item}>
               <Button href={`/partyMembers/${item}`} className="mr-3">
