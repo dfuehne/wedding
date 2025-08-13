@@ -24,9 +24,9 @@ export default function Web() {
             <Button href="gallery" className="mr-3">
               Gallery
             </Button>
-            <Button href="party" className="mr-3">
+            {/* <Button href="party" className="mr-3">
               Wedding Party
-            </Button>
+            </Button> */}
             <Button href="proposal" className="mr-3">
               Proposal
             </Button>
