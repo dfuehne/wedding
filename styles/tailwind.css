@@ -17,7 +17,7 @@
     border-color: var(--color-gray-200, currentColor);
   }
     body {
-    background-color: rgb(247, 242, 237);
-    color: rgb(122, 82, 85);
+    background-color: rgb(242, 244, 239);
+    color: rgb(169, 180, 148);
   }
 }
