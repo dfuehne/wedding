@@ -70,7 +70,7 @@ export default function CluePage(){
 
   const tabBtn = (active: boolean) =>
     `px-4 py-2 rounded-md text-sm font-medium border transition
-     ${active ? 'bg-[rgb(122,82,85)] text-[rgb(247,242,237)]' : 'text-[rgb(122,82,85)] border-[rgb(122,82,85)] hover:bg-gray-100'}`;
+     ${active ? 'bg-[var(--primary-color)] text-[var(--background-color)]' : 'text-[var(--darker-primary-color) border-[var(--darker-primary-color) hover:bg-gray-100'}`;
 
   return (
     <div>

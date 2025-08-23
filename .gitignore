@@ -38,3 +38,6 @@ storybook-static/
 # version control
 package-lock.json
 .vercel
+
+# firebase storage
+firebase-service-account.json

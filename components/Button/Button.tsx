@@ -16,17 +16,17 @@ const button = cva(
     variants: {
       intent: {
         primary: [
-          "bg-[rgb(169,180,148)]",       // background = default text color
-          "text-[rgb(247,242,237)]",   // text = default background color
-          "border-[rgb(169,180,148)]",
-          "hover:enabled:bg-[rgb(149, 168, 135)]",  // slightly darker hover bg
+          "bg-[var(--primary-color)]",       // background = default text color
+          "text-[var(--background-color)]",   // text = default background color
+          "border-[var(--primary-color)]",
+          "hover:enabled:bg-[var(--darker-primary-color)]",  // slightly darker hover bg
         ],
         secondary: [
           "bg-transparent",
-          "text-[rgb(169,180,148)]",  // text uses default text color
-          "border-[rgb(169,180,148)]",
-          "hover:enabled:bg-[rgb(247,242,237)]", // hover bg = default background color
-          "hover:enabled:text-[rgb(169,180,148)]",
+          "text-[var(--primary-color)]",  // text uses default text color
+          "border-[var(--primary-color)]",
+          "hover:enabled:bg-[var(--background-color)]", // hover bg = default background color
+          "hover:enabled:text-[var(--primary-color)]",
         ],
       },
       size: {

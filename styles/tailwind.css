@@ -20,4 +20,10 @@
     background-color: rgb(242, 244, 239);
     color: rgb(169, 180, 148);
   }
+  
+  :root {
+    --primary-color: rgb(169, 180, 148);
+    --background-color: rgb(242, 244, 239);
+    --darker-primary-color: rgb(149, 168, 135);
+  }
 }
