@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from 'components/Button/Button';
-import { formatPersonName } from '@/lib/utilsClient'
+import { WeddingPartyMember } from '@/lib/weddingPartyMember'
 
 export default function WeddingPartyPage() {
-  const [weddingPartyWithInfo, setWeddingPartyWithInfo] = useState<string[]>([]);
+  const [weddingPartyWithInfo, setWeddingPartyWithInfo] = useState<WeddingPartyMember[]>([]);
 
   useEffect(() => {
       fetch('/api/weddingPartyWithInfo')
@@ -13,9 +13,16 @@ export default function WeddingPartyPage() {
         .then((data: unknown) => {
           if (
             Array.isArray(data) &&
-            data.every((item) => typeof item === 'string')
+            data.every(
+          (item) =>
+            typeof item === 'object' &&
+            item !== null &&
+            'name' in item &&
+            'role' in item &&
+            'relationship' in item
+        )
           ) {
-            setWeddingPartyWithInfo(data);
+            setWeddingPartyWithInfo(data  as WeddingPartyMember[]);
           } else {
             console.error('Invalid data format for setWeddingPartyWithInfo:', data);
           }
@@ -42,9 +49,9 @@ export default function WeddingPartyPage() {
         </h1>
         <ul className="space-y-4 text-lg font-medium">
           {weddingPartyWithInfo.map((item) => (
-            <li key={item}>
-              <Button href={`/partyMembers/${item}`} className="mr-3">
-                {formatPersonName(item)}
+            <li key={item.slug}>
+              <Button href={`/partyMembers/${item.slug}`} className="mr-3">
+                {item.name}, {item.role}
               </Button>
             </li>
           ))}

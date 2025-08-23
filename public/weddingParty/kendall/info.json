@@ -1,1 +1,7 @@
-{"id":"1","role":"Groomsman","info":"Kendall is Duncans Brother","link":"weddingParty/kendall"}
+{
+  "name": "Kendall Trellue",
+  "role": "Groomsman",
+  "age": 21,
+  "relationship": "Duncan's Brother",
+  "info": "He's kind of annoying"
+}

@@ -1,1 +1,8 @@
-{"id":"2","role":"Bridesmaid","info":"Dani is Duncans Sister","link":"weddingParty/dani"}
+{
+  "name": "Dani Trellue",
+  "role": "Bridesmaid",
+  "age": 18,
+  "relationship": "Duncan's Sister",
+  "info": "She's kind of annoying"
+}
+
