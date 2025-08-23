@@ -78,7 +78,7 @@ export default function ProposalPage() {
               }}
               onClick={() => handleFocus(index)}
               className={`px-3 py-1 rounded-full border text-sm whitespace-nowrap transition-all
-                ${index === focusedIndex ? 'bg-[rgb(122,82,85)] text-[rgb(247,242,237)]' : 'border-[rgb(122,82,85)]'}`}
+                ${index === focusedIndex ? 'bg-[var(--primary-color)] text-[var(--background-color)]' : 'border-[var(--primary-color)]'}`}
             >
               {pin.label}
             </button>
@@ -129,11 +129,11 @@ export default function ProposalPage() {
                   {/* Pin dot (centered) */}
                   <div
                     className={`w-4 h-4 rounded-full border-2 transition transform -translate-x-1/2 -translate-y-1/2
-                      ${index === focusedIndex ? 'bg-[rgb(122,82,85)] scale-125 z-50 border-[rgb(247,242,237)]' : 'bg-[#FFF] border-[#DDD]'}`}
+                      ${index === focusedIndex ? 'bg-[var(--primary-color)] scale-125 z-50 border-[var(--background-color)]' : 'bg-[#FFF] border-[#DDD]'}`}
                   />
 
                   {/* Label to the right of the pin */}
-              <div className="absolute right-full top-1/2 -translate-y-5 -translate-x-3 ml-2 px-2 py-1 text-xs bg-[rgb(122,82,85)] text-[rgb(247,242,237)] rounded-lg shadow-md whitespace-nowrap">
+              <div className="absolute right-full top-1/2 -translate-y-5 -translate-x-3 ml-2 px-2 py-1 text-xs bg-[var(--primary-color)] text-[var(--background-color)] rounded-lg shadow-md whitespace-nowrap">
                 {pin.label}
               </div>
                 </div>

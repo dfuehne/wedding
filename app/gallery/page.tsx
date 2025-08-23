@@ -132,20 +132,20 @@ export default function GalleryPage() {
                   onMouseLeave={() => setTooltipContent(null)}
                   style={{
                     default: {
-                      fill: hasImages ? 'rgb(122,82,85)' : '#DDD',
+                      fill: hasImages ? 'var(--primary-color)' : '#DDD',
                       stroke: '#FFF',
                       strokeWidth: 0.5,
                       outline: 'none',
                       cursor: hasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                      fill: hasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
+                      fill: hasImages ? 'var(--darker-primary-color)' : '#CCC',
                       stroke: '#FFF',
                       strokeWidth: 1,
                       outline: 'none',
                     },
                     pressed: {
-                      fill: hasImages ? 'rgb(122,82,85)' : '#BBB',
+                      fill: hasImages ? 'var(--primary-color)' : '#BBB',
                       outline: 'none',
                     },
                   }}
@@ -178,20 +178,20 @@ export default function GalleryPage() {
                   onMouseLeave={() => setTooltipContent(null)}
                   style={{
                     default: {
-                      fill: hasImages ? 'rgb(122,82,85)' : '#DDD',
+                      fill: hasImages ? 'var(--primary-color)' : '#DDD',
                       stroke: '#FFF',
                       strokeWidth: 0.5,
                       outline: 'none',
                       cursor: hasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                      fill: hasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
+                      fill: hasImages ? 'var(--darker-primary-color)' : '#CCC',
                       stroke: '#FFF',
                       strokeWidth: 1,
                       outline: 'none',
                     },
                     pressed: {
-                      fill: hasImages ? 'rgb(122,82,85)' : '#BBB',
+                      fill: hasImages ? 'var(--primary-color)' : '#BBB',
                       outline: 'none',
                     },
                   }}
@@ -219,20 +219,20 @@ export default function GalleryPage() {
                     onMouseLeave={() => setTooltipContent(null)}
                     style={{
                     default: {
-                        fill: italyHasImages ? 'rgb(122,82,85)' : '#DDD',
+                        fill: italyHasImages ? 'var(--primary-color)' : '#DDD',
                         stroke: '#FFF',
                         strokeWidth: 0.5,
                         outline: 'none',
                         cursor: italyHasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                        fill: italyHasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
+                        fill: italyHasImages ? 'var(--darker-primary-color)' : '#CCC',
                         stroke: '#FFF',
                         strokeWidth: 1,
                         outline: 'none',
                     },
                     pressed: {
-                        fill: italyHasImages ? 'rgb(122,82,85)' : '#BBB',
+                        fill: italyHasImages ? 'var(--primary-color)' : '#BBB',
                         outline: 'none',
                     },
                     }}
@@ -261,20 +261,20 @@ export default function GalleryPage() {
                     onMouseLeave={() => setTooltipContent(null)}
                     style={{
                     default: {
-                        fill: belizeHasImages ? 'rgb(122,82,85)' : '#DDD',
+                        fill: belizeHasImages ? 'var(--primary-color)' : '#DDD',
                         stroke: '#FFF',
                         strokeWidth: 0.5,
                         outline: 'none',
                         cursor: belizeHasImages ? 'pointer' : 'default',
                     },
                     hover: {
-                        fill: belizeHasImages ? 'rgba(144, 101, 103, 1)' : '#CCC',
+                        fill: belizeHasImages ? 'var(--darker-primary-color)' : '#CCC',
                         stroke: '#FFF',
                         strokeWidth: 1,
                         outline: 'none',
                     },
                     pressed: {
-                        fill: belizeHasImages ? 'rgb(122,82,85)' : '#BBB',
+                        fill: belizeHasImages ? 'var(--primary-color)' : '#BBB',
                         outline: 'none',
                     },
                     }}
