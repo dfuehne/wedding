@@ -1,15 +1,9 @@
 // src/components/Bubble/Bubble.tsx (or wherever it is)
 'use client';
 
-<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './BubblingPhotoGallery.module.css';
 import { fisherYatesShuffle } from '../../lib/shuffle'; // Assuming this path is correct
-=======
-import React, { useState, useEffect, useRef } from 'react';
-import { fisherYatesShuffle } from '../../lib/shuffle'; // Assuming this path is correct
-import styles from './BubblingPhotoGallery.module.css';
->>>>>>> 6ef141151146df4d1386e303b8afcab1869007ec
 
 // Define the shape of the photo prop
 interface Photo {
