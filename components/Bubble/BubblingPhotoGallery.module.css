@@ -1,0 +1,81 @@
+/* src/components/Bubble/BubblingPhotoGallery.module.css */
+
+/*
+ * The main container for all the photo bubbles.
+ * We use flexbox to create a responsive, centered layout
+ * that wraps photos to the next line as needed.
+ */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* The space between each bubble */
+  padding: 20px;
+  min-height: 50vh;
+}
+
+/*
+ * The base style for every single photo bubble.
+ * This class is always applied.
+ */
+.photo {
+  /* This is the key to the circular shape */
+  border-radius: 50%;
+
+  /* Ensure the background image covers the circle without distortion */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* A subtle shadow to lift the bubbles off the page */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /*
+   * The heart of the animation! This ensures that any changes
+   * to width, height, or box-shadow happen smoothly over 0.5 seconds.
+   */
+  transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.5s ease-in-out;
+}
+
+/*
+ * The default, smaller size for a photo bubble.
+ */
+.normal {
+  width: 180px;
+  height: 180px;
+  z-index: 1; /* Default stacking order */
+}
+
+/*
+ * The enlarged "bubbled-up" state.
+ */
+.large {
+  width: 280px;
+  height: 280px;
+  z-index: 10; /* Bring the large bubble to the front so it overlaps others */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* A more pronounced shadow */
+}
+
+/*
+ * Media query for responsiveness on smaller screens.
+ * On mobile devices, the bubbles will be smaller to fit better.
+ */
+@media (max-width: 768px) {
+  .gallery {
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .normal {
+    width: 80px;
+    height: 80px;
+  }
+
+  .large {
+    width: 160px;
+    height: 160px;
+  }
+}
