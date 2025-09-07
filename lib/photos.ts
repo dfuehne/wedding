@@ -1,5 +1,5 @@
 import { storage } from "@/lib/firebase";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
 
 // Define the shape of a photo object
 export interface Photo {

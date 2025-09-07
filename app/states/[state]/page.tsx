@@ -8,11 +8,14 @@ const formatSlug = (state: string): string =>
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
-export default async function StateGalleryPage({
-  params,
-}: {
+interface PageProps {
   params: { state: string };
-}) {
+}
+
+export default async function StateGalleryPage(props: unknown) {
+  const { params } = props as { params: { state: string } }; // type assertion inside
+
+
   const state = params.state;
   const stateName = formatSlug(state);
 
