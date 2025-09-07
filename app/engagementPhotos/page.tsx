@@ -1,87 +1,39 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Button } from "components/Button/Button"
+import { useEffect, useState } from "react";
+import { storage } from "@/lib/firebase";
+import { Button } from "components/Button/Button";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
 
-type BlobItem = {
-  url: string;
-  pathname: string;
-  uploadedAt: string;
-};
-
-export default function StatePage() {
-  const [images, setImages] = useState<BlobItem[]>([]);
-  const [error, setError] = useState<string | null>(null);
+export default function EngagementPhotoPage() {
+  const [photos, setPhotos] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchImages = async () => {
-        try {
-        const res = await fetch('/api/engagementPhotos');
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const rawData: unknown = await res.json();
+    async function loadPhotos() {
+      const folderRef = ref(storage, "engagement-photos/");
+      const result = await listAll(folderRef);
 
-        if (Array.isArray(rawData)) {
-            const typedData: BlobItem[] = rawData.map((item) => {
-            if (
-                typeof item === 'object' &&
-                item !== null &&
-                'url' in item &&
-                'pathname' in item &&
-                'uploadedAt' in item
-            ) {
-                return {
-                url: item.url as string,
-                pathname: item.pathname as string,
-                uploadedAt: item.uploadedAt as string,
-                };
-            } else {
-                throw new Error('Invalid data format');
-            }
-            });
+      const urls = await Promise.all(
+        result.items.map((itemRef) => getDownloadURL(itemRef))
+      );
 
-            setImages(typedData);
-        } else {
-            throw new Error('Data is not an array');
-        }
-        } catch (err: unknown) {
-        setError('Error loading images');
-        }
-    };
+      setPhotos(urls);
+    }
+    loadPhotos();
+  }, []);
 
-    fetchImages();
-    }, []);
   return (
     <div>
       <div className="mb-6">
-            <Button href="/proposal" className="mr-3">
-              ← Back
-            </Button>
+        <Button href="/proposal" className="mr-3">
+          ← Back
+        </Button>
       </div>
-      <div className="mx-auto max-w-3xl text-center">
-                {/* Logo */}
-                <img
-                  src="../logo.png"
-                  alt="Wedding Logo"
-                  className="mx-auto mb-6 w-32 h-auto"
-                />
-      </div>
-      <div className="p-6">
-        {error && <p className="text-red-600">{error}</p>}
-        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {images.length > 0 ? (
-            images.map((img) => (
-              <img
-                key={img.pathname}
-                src={img.url}
-                alt={`Image ${img.pathname}`}
-                className="rounded shadow"
-                loading="lazy"
-              />
-            ))
-          ) : (
-            <p>No images found.</p>
-          )}
-        </div>
+      <h1>Engagement Photos</h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        {photos.map((url, i) => (
+          <img key={i} src={url} alt={`Photo ${i + 1}`} className="rounded-xl shadow" />
+        ))}
       </div>
     </div>
   );
