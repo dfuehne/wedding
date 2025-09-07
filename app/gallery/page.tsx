@@ -2,23 +2,17 @@ import { Button } from 'components/Button/Button';
 import { transformGeoJson } from '@/lib/utilsClient';
 import type { FeatureCollection } from 'geojson';
 import GalleryClient from './GalleryClient'; 
-
-async function fetchData<T>(url: string): Promise<T> {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
-  return res.json() as Promise<T>;
-}
+import { getStatesWithImages } from '@/lib/statesWithImages';
+import italyGeoRawJson from '@/public/italy.geo.json';
+import belizeGeoRawJson from '@/public/belize.geo.json';
 
 export default async function GalleryPage() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  
-  // Fetch all the data the client will need
-  const statesWithImages = await fetchData<string[]>(`${baseUrl}/api/statesWithImages`);
-  const italyGeoRaw = await fetchData<FeatureCollection>(`${baseUrl}/italy.geo.json`);
-  const belizeGeoRaw = await fetchData<FeatureCollection>(`${baseUrl}/belize.geo.json`);
+  // Get the data directly — no fetch needed
+  const statesWithImages = getStatesWithImages(); // await if async
 
-  
-  // Perform the transformation on the server
+  // Transform the geo data on the server
+  const italyGeoRaw = italyGeoRawJson as FeatureCollection;
+  const belizeGeoRaw = belizeGeoRawJson as FeatureCollection;
   const italyGeo = transformGeoJson(italyGeoRaw, -140.0, 8.0, 0.6);
   const belizeGeo = transformGeoJson(belizeGeoRaw, 0.5, 11.5, 1.0);
 
@@ -30,7 +24,6 @@ export default async function GalleryPage() {
         </Button>
       </div>
       <div className="mx-auto max-w-3xl text-center">
-        {/* Logo */}
         <img
           src="/logo.png"
           alt="Wedding Logo"
@@ -41,9 +34,6 @@ export default async function GalleryPage() {
         </h1>
       </div>
 
-      {/* Render the Client Component, passing all the data it needs.
-        The Client Component looks almost identical to your original file.
-      */}
       <GalleryClient
         initialStatesWithImages={statesWithImages}
         initialItalyGeo={italyGeo}
