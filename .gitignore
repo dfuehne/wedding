@@ -36,7 +36,6 @@ storybook-static/
 /.npm-only-allow
 
 # version control
-package-lock.json
 .vercel
 
 # firebase storage
