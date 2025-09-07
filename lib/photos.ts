@@ -1,32 +1,27 @@
-// src/lib/photos.ts
-
-import fs from 'fs';
-import path from 'path';
+import { storage } from "@/lib/firebase";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 // Define the shape of a photo object
 export interface Photo {
   url: string;
+  name: string;
 }
 
-export function getPhotosForState(slug: string): Photo[] {
-  const directoryPath = path.join(process.cwd(), 'public/locations', slug);
-
+export async function getPhotosForState(slug: string): Promise<Photo[]> {
   try {
-    // Check if the directory exists
-    if (!fs.existsSync(directoryPath)) {
-      console.warn(`Directory not found for slug: ${slug}`);
-      return [];
-    }
-    
-    const files = fs.readdirSync(directoryPath);
+    const folderRef = ref(storage, `locations/${slug}/`);
+    const result = await listAll(folderRef);
 
-    return files
-      .filter((file) => /\.(jpe?g|png|gif|webp)$/i.test(file))
-      .map((file) => ({
-        url: `/locations/${slug}/${file}`, // Construct the public URL
-      }));
+    const photos: Photo[] = await Promise.all(
+      result.items.map(async (item) => {
+        const url = await getDownloadURL(item);
+        return { url, name: item.name };
+      })
+    );
+
+    return photos;
   } catch (error) {
-    console.error(`Error reading directory for slug ${slug}:`, error);
+    console.error(`Error fetching photos for slug ${slug}:`, error);
     return [];
   }
 }

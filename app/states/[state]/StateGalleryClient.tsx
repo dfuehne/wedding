@@ -10,9 +10,8 @@ interface StateGalleryClientProps {
 }
 
 export default function StateGalleryClient({ initialPhotos, initialError }: StateGalleryClientProps) {
-  // The state is now initialized with the data passed down from the server.
-  const [photos, _setPhotos] = useState<Photo[]>(initialPhotos);
-  const [error, _setError] = useState<string | null>(initialError);
+  const [photos] = useState<Photo[]>(initialPhotos);
+  const [error] = useState<string | null>(initialError);
 
   if (error) {
     return <p className="text-center text-red-500">{error}</p>;

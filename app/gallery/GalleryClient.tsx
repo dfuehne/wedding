@@ -1,4 +1,3 @@
-// app/gallery/GalleryClient.tsx
 'use client';
 
 import { useState } from 'react';
@@ -27,7 +26,8 @@ export default function GalleryClient({
   initialItalyGeo,
   initialBelizeGeo,
 }: GalleryClientProps) {
-  const statesWithImages = initialStatesWithImages;
+  // ✅ always ensure it’s an array
+  const statesWithImages = initialStatesWithImages ?? [];
   const italyGeo = initialItalyGeo;
   const belizeGeo = initialBelizeGeo;
 
@@ -145,89 +145,87 @@ export default function GalleryClient({
             })
           }
         </Geographies>
+
+        {/* Italy */}
         {italyGeo && (
-            <Geographies geography={italyGeo}>
-                {({ geographies }) =>
-                geographies.map((geo) => {
-                    return (
-                    <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onClick={() => italyHasImages && goToState(italySlug)}
-                        onMouseEnter={(evt) => {
-                        setTooltipContent("Italy");
-                        handleMouseMove(evt);
-                        }}
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={() => setTooltipContent(null)}
-                        style={{
-                        default: {
-                            fill: italyHasImages ? 'var(--primary-color)' : '#DDD',
-                            stroke: '#FFF',
-                            strokeWidth: 0.5,
-                            outline: 'none',
-                            cursor: italyHasImages ? 'pointer' : 'default',
-                        },
-                        hover: {
-                            fill: italyHasImages ? 'var(--darker-primary-color)' : '#CCC',
-                            stroke: '#FFF',
-                            strokeWidth: 1,
-                            outline: 'none',
-                        },
-                        pressed: {
-                            fill: italyHasImages ? 'var(--primary-color)' : '#BBB',
-                            outline: 'none',
-                        },
-                        }}
-                        tabIndex={italyHasImages ? 0 : -1}
-                    />
-                    );
-                })
-                }
-            </Geographies>
-        
+          <Geographies geography={italyGeo}>
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onClick={() => italyHasImages && goToState(italySlug)}
+                  onMouseEnter={(evt) => {
+                    setTooltipContent("Italy");
+                    handleMouseMove(evt);
+                  }}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={() => setTooltipContent(null)}
+                  style={{
+                    default: {
+                      fill: italyHasImages ? 'var(--primary-color)' : '#DDD',
+                      stroke: '#FFF',
+                      strokeWidth: 0.5,
+                      outline: 'none',
+                      cursor: italyHasImages ? 'pointer' : 'default',
+                    },
+                    hover: {
+                      fill: italyHasImages ? 'var(--darker-primary-color)' : '#CCC',
+                      stroke: '#FFF',
+                      strokeWidth: 1,
+                      outline: 'none',
+                    },
+                    pressed: {
+                      fill: italyHasImages ? 'var(--primary-color)' : '#BBB',
+                      outline: 'none',
+                    },
+                  }}
+                  tabIndex={italyHasImages ? 0 : -1}
+                />
+              ))
+            }
+          </Geographies>
         )}
+
+        {/* Belize */}
         {belizeGeo && (
-            <Geographies geography={belizeGeo}>
-                {({ geographies }) =>
-                geographies.map((geo) => {
-                    return (
-                    <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onClick={() => belizeHasImages && goToState(belizeSlug)}
-                        onMouseEnter={(evt) => {
-                        setTooltipContent("Belize");
-                        handleMouseMove(evt);
-                        }}
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={() => setTooltipContent(null)}
-                        style={{
-                        default: {
-                            fill: belizeHasImages ? 'var(--primary-color)' : '#DDD',
-                            stroke: '#FFF',
-                            strokeWidth: 0.5,
-                            outline: 'none',
-                            cursor: belizeHasImages ? 'pointer' : 'default',
-                        },
-                        hover: {
-                            fill: belizeHasImages ? 'var(--darker-primary-color)' : '#CCC',
-                            stroke: '#FFF',
-                            strokeWidth: 1,
-                            outline: 'none',
-                        },
-                        pressed: {
-                            fill: belizeHasImages ? 'var(--primary-color)' : '#BBB',
-                            outline: 'none',
-                        },
-                        }}
-                        tabIndex={belizeHasImages ? 0 : -1}
-                    />
-                    );
-                })
-                }
-            </Geographies>
-        
+          <Geographies geography={belizeGeo}>
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  onClick={() => belizeHasImages && goToState(belizeSlug)}
+                  onMouseEnter={(evt) => {
+                    setTooltipContent("Belize");
+                    handleMouseMove(evt);
+                  }}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={() => setTooltipContent(null)}
+                  style={{
+                    default: {
+                      fill: belizeHasImages ? 'var(--primary-color)' : '#DDD',
+                      stroke: '#FFF',
+                      strokeWidth: 0.5,
+                      outline: 'none',
+                      cursor: belizeHasImages ? 'pointer' : 'default',
+                    },
+                    hover: {
+                      fill: belizeHasImages ? 'var(--darker-primary-color)' : '#CCC',
+                      stroke: '#FFF',
+                      strokeWidth: 1,
+                      outline: 'none',
+                    },
+                    pressed: {
+                      fill: belizeHasImages ? 'var(--primary-color)' : '#BBB',
+                      outline: 'none',
+                    },
+                  }}
+                  tabIndex={belizeHasImages ? 0 : -1}
+                />
+              ))
+            }
+          </Geographies>
         )}
       </ComposableMap>
 

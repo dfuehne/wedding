@@ -1,14 +1,14 @@
 import { Button } from 'components/Button/Button';
 import { transformGeoJson } from '@/lib/utilsClient';
 import type { FeatureCollection } from 'geojson';
-import GalleryClient from './GalleryClient'; 
+import GalleryClient from './GalleryClient';
 import { getStatesWithImages } from '@/lib/statesWithImages';
 import italyGeoRawJson from '@/public/italy.geo.json';
 import belizeGeoRawJson from '@/public/belize.geo.json';
 
 export default async function GalleryPage() {
-  // Get the data directly — no fetch needed
-  const statesWithImages = getStatesWithImages(); // await if async
+  // ✅ await because it's async (Firebase call)
+  const statesWithImages = await getStatesWithImages();
 
   // Transform the geo data on the server
   const italyGeoRaw = italyGeoRawJson as FeatureCollection;
@@ -23,6 +23,7 @@ export default async function GalleryPage() {
           ← Back
         </Button>
       </div>
+
       <div className="mx-auto max-w-3xl text-center">
         <img
           src="/logo.png"
@@ -35,7 +36,8 @@ export default async function GalleryPage() {
       </div>
 
       <GalleryClient
-        initialStatesWithImages={statesWithImages}
+        // ✅ always pass an array, fallback empty
+        initialStatesWithImages={statesWithImages ?? []}
         initialItalyGeo={italyGeo}
         initialBelizeGeo={belizeGeo}
       />

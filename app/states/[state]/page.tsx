@@ -1,8 +1,6 @@
 import { Button } from '@/components/Button/Button';
-import { getPhotosForState } from '@/lib/photos';
-import type { Photo } from '@/lib/photos';
+import { getPhotosForState, type Photo } from '@/lib/photos';
 import StateGalleryClient from './StateGalleryClient'; 
-
 
 const formatSlug = (state: string): string =>
   state
@@ -11,17 +9,22 @@ const formatSlug = (state: string): string =>
     .join(' ');
 
 export default async function StateGalleryPage({
-    params,
+  params,
 }: {
-  params: Promise<{ state: string }>;
+  params: { state: string };
 }) {
-  const resolvedParams = await params;  // <-- await here!
-  const state = resolvedParams.state;
-  // No await
+  const state = params.state;
   const stateName = formatSlug(state);
 
-  const photos: Photo[] = getPhotosForState(state);
-  const error: string | null = null;
+  let photos: Photo[] = [];
+  let error: string | null = null;
+
+  try {
+    photos = await getPhotosForState(state);  // <-- await here
+  } catch (err) {
+    console.error(err);
+    error = "Failed to load photos for this location.";
+  }
 
   return (
     <div>
