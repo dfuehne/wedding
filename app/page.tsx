@@ -9,7 +9,7 @@ const fancyFont = Pinyon_Script({subsets: ['latin'], weight: '400' });
 const sections = [
   { name: "Gallery", href: "/gallery" },
   { name: "Proposal", href: "/proposal" },
-  //{ name: "Wedding Party", href: "/party" },
+  { name: "Venue", href: "/venue" },
 ];
 
 export default function Web() {

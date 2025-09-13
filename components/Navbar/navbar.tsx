@@ -66,6 +66,11 @@ export default function Navbar() {
               Proposal
             </Link>
           </li>
+          <li>
+            <Link href="/venue" className="block px-2 py-1 hover:bg-[var(--darker-primary-color)] rounded">
+              Venue
+            </Link>
+          </li>
         </ul>
       </aside>
     </>
