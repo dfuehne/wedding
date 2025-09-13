@@ -16,8 +16,8 @@ export default function Web() {
 
   return (
     <>
-      <section>
         <Navbar/>
+        <main className="pt-14 p-6">
         <div className="mx-auto grid max-w-[--breakpoint-xl] px-4 py-8 text-center lg:py-16">
           <div className="mx-auto place-self-center">
             {/* Logo */}
@@ -67,7 +67,7 @@ export default function Web() {
 
           </div>
         </div>
-      </section>
+        </main>
     </>
   )
 }
