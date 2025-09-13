@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { storage } from "@/lib/firebase";
-import { Button } from "components/Button/Button";
+import Navbar from "@/components/Navbar/navbar";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
+import Image from "next/image";
 
 export default function EngagementPhotoPage() {
   const [photos, setPhotos] = useState<string[]>([]);
@@ -24,17 +25,14 @@ export default function EngagementPhotoPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <Button href="/proposal" className="mr-3">
-          ← Back
-        </Button>
-      </div>
-      <h1>Engagement Photos</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-        {photos.map((url, i) => (
-          <img key={i} src={url} alt={`Photo ${i + 1}`} className="rounded-xl shadow" />
-        ))}
-      </div>
+      <Navbar/>
+      <main className="pt-14 p-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+          {photos.map((url, i) => (
+            <img key={i} src={url} alt={`Photo ${i + 1}`} className="rounded-xl shadow" />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }

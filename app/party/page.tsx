@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from "next/link";
 import { Button } from 'components/Button/Button';
 import { WeddingPartyMember } from '@/lib/weddingPartyMember'
+import Navbar from "@/components/Navbar/navbar";
 
 export default function WeddingPartyPage() {
   const [weddingPartyWithInfo, setWeddingPartyWithInfo] = useState<WeddingPartyMember[]>([]);
@@ -32,31 +34,37 @@ export default function WeddingPartyPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <Button href="/" className="mr-3">
-          ← Back
-        </Button>
-      </div>
-      <div className="mx-auto max-w-3xl text-center">
-        {/* Logo */}
-        <img
-          src="logo.png"
-          alt="Wedding Logo"
-          className="mx-auto mb-6 w-32 h-auto"
-        />
-        <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
-          Wedding Party!
-        </h1>
-        <ul className="space-y-4 text-lg font-medium">
-          {weddingPartyWithInfo.map((item) => (
-            <li key={item.slug}>
-              <Button href={`/partyMembers/${item.slug}`} className="mr-3">
-                {item.name}, {item.role}
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Navbar/>
+      <main className="pt-14 p-6">
+        <div className="mx-auto max-w-3xl text-center">
+          {/* Logo */}
+          <img
+            src="logo.png"
+            alt="Wedding Logo"
+            className="mx-auto mb-6 w-32 h-auto"
+          />
+          <h1 className="mb-4 max-w-2xl mx-auto text-2xl leading-none font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+            Wedding Party!
+          </h1>
+
+            <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> {/* top line */}
+
+            {weddingPartyWithInfo.map((item, idx) => (
+              <div key={item.slug} className="w-full text-center my-8">
+                {idx !== 0 && (
+                  <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> // line between sections
+                )}
+                <Link href={`/partyMembers/${item.slug}`}>
+                  <span className="text-2xl font-medium cursor-pointer hover:underline transition">
+                    {item.name}, {item.role}
+                  </span>
+                </Link>
+              </div>
+            ))}
+
+            <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> {/* bottom line */}
+        </div>
+      </main>
     </div>
   );
 }

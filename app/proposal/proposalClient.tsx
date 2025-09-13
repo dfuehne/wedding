@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Button } from 'components/Button/Button';
 import { CluePin } from '@/src/cluePin';
 import { useEffect, useRef, useState } from 'react';
 
@@ -49,15 +48,6 @@ export default function ProposalPage() {
 
   return (
     <div>
-      {/* Back button */}
-      <div className="mb-6 flex">
-        <Button href="/" className="inline-flex mr-3">
-          ← Back
-        </Button>
-        <Button href="/engagementPhotos" className="ml-3">
-          Just Show Me The Engagement Pictures
-        </Button>
-      </div>
       <div className="mx-auto max-w-3xl text-center">
         {/* Logo */}
         <img

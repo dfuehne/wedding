@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Button } from "components/Button/Button"
 import { formatClueName } from '@/lib/utilsClient'
+import Navbar from "@/components/Navbar/navbar";
 
 type ApiResponse = { files: string[] } | { error: string };
 type View = 'clue' | 'supp' | 'pics';
@@ -74,8 +75,10 @@ export default function CluePage(){
 
   return (
     <div>
+      <Navbar/>
+      <main className="pt-14 p-6">
       <div className="mb-6 flex items-center justify-between">
-        <Button href={`/proposal?focusedClue=${clue}`} className="mr-3">
+        <Button href={`/proposal?focusedClue=${clue}`} className="mt-4 flex justify-start items-center">
           ← Back
         </Button>
 
@@ -188,6 +191,7 @@ export default function CluePage(){
           )}
         </div>
       )}
+      </main>
     </div>
   );
 }
