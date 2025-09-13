@@ -71,6 +71,16 @@ export default function Navbar() {
               Venue
             </Link>
           </li>
+          <li>
+            <Link href="/travel" className="block px-2 py-1 hover:bg-[var(--darker-primary-color)] rounded">
+              Travel & Accommadations
+            </Link>
+          </li>
+          <li>
+            <Link href="/story" className="block px-2 py-1 hover:bg-[var(--darker-primary-color)] rounded">
+              Our Story
+            </Link>
+          </li>
         </ul>
       </aside>
     </>

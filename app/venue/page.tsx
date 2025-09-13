@@ -31,6 +31,14 @@ export default function VenuePage() {
     <div>
       <Navbar/>
       <main className="pt-14 p-6">
+          <div className="mx-auto place-self-center">
+            {/* Logo */}
+            <img
+              src="logo.png"
+              alt="Wedding Logo"
+              className="mx-auto mb-6 w-32 h-auto"
+            />
+          </div>
             {photos[2] && (
             <div className="flex justify-center">
                 <Image
