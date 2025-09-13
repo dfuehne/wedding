@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { EnvelopeBase, EnvelopeFlap } from "components/Envelope/envelope";
-import Navbar from "@/components/Navbar/navbar";
-import { Button } from 'components/Button/Button';
+import { EnvelopeBase, EnvelopeFlap } from "components/Envelope/envelope"
 
 
 export default function InvitationPageClient() {
@@ -47,10 +45,6 @@ export default function InvitationPageClient() {
 
   return (
     <div>
-      <Navbar/>
-      <Button href="/addressInput" className="mr-3">
-        I want a Physical Paper!
-      </Button>
       <div className="flex items-center justify-center min-h-screen">
         {!switchOrder && (<div className="relative w-72 h-48">
           {/* Invitation card behind */}

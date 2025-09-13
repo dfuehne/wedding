@@ -1,5 +1,7 @@
 import { Metadata } from "next"
 import InvitationPageClient from "./saveTheDateClient"
+import { Button } from 'components/Button/Button';
+import Navbar from "@/components/Navbar/navbar";
 
 export const metadata: Metadata = {
   title: "Mark Your Calendars: Sep 4th!",
@@ -10,7 +12,15 @@ export const metadata: Metadata = {
 
 export default function SaveTheDatePage() {
   return (
-    <>
-      <InvitationPageClient />
-    </>
+    <div className="min-h-screen">
+                <Navbar />
+                <main className="pt-14 p-6">
+                  <div className="mt-4 flex justify-start items-center">
+                    <Button href="/addressInput" className="ml-3">
+                      I want a Physical Paper!
+                    </Button>
+                  </div>
+                  <InvitationPageClient />
+                </main>
+              </div>
 );}
