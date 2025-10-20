@@ -34,18 +34,16 @@ export default function VenuePage() {
                 <div>
                     <p className="mt-2 text-2xl font-extrabold"> Accomadations </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
-                    <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, </p>
-                    <p className="mt-2 text-xl font-medium"> Book accommadations as soon as you can! </p>
+                    <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, book as soon as you can!</p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     <Link href={"https://www.airbnb.com"}>
                         <span className="text-2xl font-extrabold cursor-pointer hover:underline transition">
                             AirBnb
                         </span>
+                        <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
+                            <p className="text-xl font-medium cursor-pointer hover:underline transition"> Buena Vista is mainly an AirBnb town, this is probably the way to go</p>
+                        <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     </Link>
-                    <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
-                    <p className="text-xl font-medium "> Buena Vista is mainly an AirBnb town</p>
-                    <p className="text-xl font-medium "> This is probably the way to go</p>
-                    <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     <p className="mt-2 text-2xl font-extrabold"> Hotels </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
                         <Link href={"https://www.bestwestern.com/en_US/book/hotel-rooms.06164.html?iata=00170260&ssob=PSBM00199G&cid=PSBM00199G:google:Conversion_National_X_US_Google_BW_BW_BR_X_Consolidated_En_District1_CO_Tertiary:best%20western%20buena%20vista%20co&gclsrc=aw.ds&gad_source=1&gad_campaignid=21226517701&gbraid=0AAAAAD-tl1gU2oeOTj5zjRfWGXOtP2odt&gclid=Cj0KCQjwrJTGBhCbARIsANFBfgtR_T95yp81zKXLCDLgKxDHB6KW_OnA8z3mz4XoSYar1t7YID4ZIDgaAvfREALw_wcB"}>
@@ -53,26 +51,31 @@ export default function VenuePage() {
                             Best Western Vista Inn
                         </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://www.super.com/travel/hotels/elXBpNEG?utm_source=adwords_semst&utm_campaign=G%3AST%3AUS%3APPC%3ANB%3AProp%3AUS-US%3AEN%3A1_2-Star&gad_source=1&gad_campaignid=19593026602&gclid=Cj0KCQjwrJTGBhCbARIsANFBfgvKk-aR68iAeuWIj5H0YMQ73qmw5nZmrvqDPsdaKJ9r89dXhkRUzIoaAmDFEALw_wcB&redirect_auth_retry=true"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             Super 8 By Wyndham Buena Vista
                         </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://surfhotel.com"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             Surf Hotel & Chateau
                         </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://www.theinnbv.com"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             The Inn
                         </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://www.shorehousebv.com"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             Shorehouse Hotel
                         </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://mtprinceton.com"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             Mt. Princeton Hot Springs Resort
@@ -86,6 +89,7 @@ export default function VenuePage() {
                                 BV Overlook
                             </p>
                         </Link>
+                        <div className="mt-8" />
                         <Link href={"https://www.fs.usda.gov/r02/psicc/recreation/collegiate-peaks-campground"}>
                             <p className="text-xl font-medium cursor-pointer hover:underline transition">
                                 Collegiate Peaks Campground
