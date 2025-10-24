@@ -15,7 +15,7 @@ export default function VenuePage() {
 
   useEffect(() => {
     async function loadPhotos() {
-      const folderRef = ref(storage, "venue/");
+      const folderRef = ref(storage, "venue/"); 
       const result = await listAll(folderRef);
 
       const urls = await Promise.all(
