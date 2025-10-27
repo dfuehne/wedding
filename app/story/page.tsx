@@ -47,7 +47,7 @@ export default function VenuePage() {
                 width={800}
                 height={800}
                 />
-            </div>IMG_7638.PNG
+            </div>
         <div className="max-w-4xl mx-auto p-8 rounded-lg font-serif leading-relaxed text-justify">
           <p className="text-xl font-medium indent-8">
           Zoe was a sophomore at Colorado School of Mines competing on the cross country and track team when she met Duncan, a freshman joining the team.
@@ -61,7 +61,7 @@ export default function VenuePage() {
                 width={200}
                 height={200}
                 />
-            </div>https://firebasestorage.googleapis.com/v0/b/zdwedding.firebasestorage.app/o/story%2FIMG_0859.jpeg?alt=media&token=8d1768c2-a049-43d4-90b4-bf6f53e6f455
+            </div>
           <p className="text-xl font-medium indent-8">
           Right after the summer of 2020, Duncan slid back into Zoe's life through her Instagram DMs. Two months later, Zoe finally liked message. Luckily Duncan tried again. Zoe decided that he was cute, and wanted to invite him to bake in her apartment (with help from her roommates Molly, Mel, and Alex).
           For their first real date, they went together to a wine party at his apartment. Duncan tried to impress Zoe by setting up a table and showing her his *best* magic tricks. 
