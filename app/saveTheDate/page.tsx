@@ -17,7 +17,7 @@ export default function SaveTheDatePage() {
                 <main className="pt-14 p-6">
                   <div className="mt-4 flex justify-start items-center">
                     <Button href="/addressInput" className="ml-3">
-                      I want a Physical Paper!
+                      Fill Out Address Here!
                     </Button>
                   </div>
                   <InvitationPageClient />
