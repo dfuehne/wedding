@@ -92,7 +92,7 @@ export default function VenuePage() {
                 />
             </div>
           <p className="text-xl font-medium indent-8">
-          In June of 2025 Duncan proposed to Zoe at a beautiful spot in the coastline of Catalina Island after a creating a massive scavenger hunt for her to solve, and supripsed her with family and friends! (Check out the {" "}
+          In June of 2025 Duncan proposed to Zoe at a beautiful spot in the coastline of Catalina Island after a creating a massive scavenger hunt for her to solve, and surprised her with family and friends! (Check out the {" "}
           
           
           <Link href="/proposal" className="text-blue-300 hover:underline">
