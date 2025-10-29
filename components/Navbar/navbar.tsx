@@ -73,7 +73,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link href="/travel" className="block px-2 py-1 hover:bg-[var(--darker-primary-color)] rounded">
-              Travel & Accommadations
+              Travel & Accommodations
             </Link>
           </li>
           <li>

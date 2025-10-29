@@ -10,7 +10,7 @@ const sections = [
   { name: "Gallery", href: "/gallery" },
   { name: "Proposal", href: "/proposal" },
   { name: "Venue", href: "/venue" },
-  { name: "Travel & Accommadations", href: "/travel" },
+  { name: "Travel & Accommodations", href: "/travel" },
   { name: "Our Story", href: "/story" },
 ];
 
