@@ -32,7 +32,7 @@ export default function VenuePage() {
             <p className="mt-2 text-2xl font-extrabold"> Buena Vista </p>
             <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                    <p className="mt-2 text-2xl font-extrabold"> Accomadations </p>
+                    <p className="mt-2 text-2xl font-extrabold"> Accommodations </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
                     <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, book as soon as you can!</p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
