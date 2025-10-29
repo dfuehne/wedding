@@ -33,7 +33,7 @@ export default function Web() {
               Zoe + Duncan
             </h1>
             <h1 className="mb-6 text-2xl font-medium">
-                    4 Septmeber, 2026
+                    4 Septemeber, 2026
             </h1>
             <h1 className="mb-6 text-2xl font-medium">
                     Buena Vista, Colorado
