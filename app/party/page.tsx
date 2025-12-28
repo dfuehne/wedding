@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from "next/link";
-import { Button } from 'components/Button/Button';
 import { WeddingPartyMember } from '@/lib/weddingPartyMember'
 import Navbar from "@/components/Navbar/navbar";
 
