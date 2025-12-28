@@ -62,10 +62,13 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
-  } catch (err: any) {
+  } catch (err: unknown | Error) {
     console.error('RSVP API ERROR:', err);
+
+    const message = err instanceof Error ? err.message : 'Unknown error';
+
     return NextResponse.json(
-      { error: 'Internal server error', details: err.message },
+      { error: 'Internal server error', details: message },
       { status: 500 }
     );
   }
