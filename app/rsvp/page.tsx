@@ -35,13 +35,13 @@ export default function RSVP() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [answer, setAnswer] = useState('');
-  const [verified, setVerified] = useState(false);
-  const [answerError, setAnswerError] = useState('');
+  //const [answer, setAnswer] = useState('');
+  //const [verified, setVerified] = useState(false);
+  //const [answerError, setAnswerError] = useState('');
 
   // Search for a specific party
   const handleSearch = async () => {
-    setVerified(false);
+    //setVerified(false);
     setSubmitted(false);
     setError('');
     setParty(null);
@@ -99,17 +99,17 @@ export default function RSVP() {
     }
   };
 
-  const verifyAnswer = async (inputAnswer: string, actualAnswer: string ) => {
+//   const verifyAnswer = async (inputAnswer: string, actualAnswer: string ) => {
 
-  if (inputAnswer.trim().toLowerCase() === actualAnswer.trim().toLowerCase()) {
-    setVerified(true);
-    setAnswerError('');
-  } else {
-    setAnswerError('Wrong answer. Try again.');
-  }
-    setAnswer('');
-    return;
-};
+//   if (inputAnswer.trim().toLowerCase() === actualAnswer.trim().toLowerCase()) {
+//     setVerified(true);
+//     setAnswerError('');
+//   } else {
+//     setAnswerError('Wrong answer. Try again.');
+//   }
+//     setAnswer('');
+//     return;
+// };
 
   return (
     <div>
@@ -164,7 +164,7 @@ export default function RSVP() {
                 {party.partyName}
               </h1>
 
-              {party && !verified && (
+              {/* {party && !verified && (
                 <div>
                   <p className="mt-2 text-xl font-medium"> 
                     Security Question:
@@ -187,15 +187,15 @@ export default function RSVP() {
                       Continue
                     </button>
                 </div>
-              )}
+              )} */}
 
-              {answerError && (
+              {/* {answerError && (
                 <p style={{ color: 'red', marginTop: '0.5rem' }}>
                   {answerError}
                 </p>
-              )}
+              )} */}
 
-              {verified && !submitted && (
+              {!submitted && (
                 <div>
                   <p className="mt-2 text-xl font-medium"/> 
                 <form
@@ -240,7 +240,7 @@ export default function RSVP() {
                 </form>
               </div>
             )}
-            {verified && submitted && (
+            {submitted && (
               <p className="mt-2 text-xl font-medium">
                 Thanks for Submitting RSVP!
               </p> 
