@@ -123,31 +123,38 @@ export default function RSVP() {
               className="mx-auto mb-6 w-32 h-auto"
             />
         </div>
-        <div className="text-center">
-          <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl xl:text-4xl">
-            RSVP Form
-          </h1>
-          <p className="mt-2 text-xl font-medium"> 
-            Please enter the first and last name of one member of your party to rsvp for the whole group!
-          </p>
-          <div style={{ marginBottom: '1rem' }}>
-            <input
-              className="border border-[var(--primary-color)] px-3 py-2"
-              placeholder="First Name"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value)}
-              style={{ marginRight: '0.5rem' }}
-            />
-            <input
-              className="border border-[var(--primary-color)] px-3 py-2 pr-10"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={e => setLastName(e.target.value)}
-            />
-            <button onClick={handleSearch} className="rounded bg-[var(--primary-color)] ml-2 px-4 py-2 font-semibold text-[var(--background-color)] hover:opacity-90">
-              Search
-            </button>
-          </div>
+<div className="text-center">
+  <h1 className="text-2xl font-extrabold tracking-tight md:text-3xl xl:text-4xl">
+    RSVP Form
+  </h1>
+
+  <p className="mt-2 text-xl font-medium">
+    Please enter the first and last name of one member of your party to rsvp for the whole group!
+  </p>
+
+  <div className="mt-6 flex flex-col items-center gap-4">
+    <input
+      className="border border-[var(--primary-color)] px-3 py-2 w-64"
+      placeholder="First Name"
+      value={firstName}
+      onChange={e => setFirstName(e.target.value)}
+    />
+
+    <input
+      className="border border-[var(--primary-color)] px-3 py-2 w-64"
+      placeholder="Last Name"
+      value={lastName}
+      onChange={e => setLastName(e.target.value)}
+    />
+
+    <button
+      onClick={handleSearch}
+      className="rounded bg-[var(--primary-color)] px-6 py-2 font-semibold text-[var(--background-color)] hover:opacity-90"
+    >
+      Search
+    </button>
+  </div>
+
 
           {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -199,7 +206,9 @@ export default function RSVP() {
                 >
                   {party.people.map(member => (
                     <div key={member.rsvpId} style={{ marginBottom: '0.5rem' }}>
-                      <span>{member.first} {member.last}</span>
+                       <span>
+                          {member.first} {member.last !== "Plus 1" && member.last}
+                        </span>
                       <label style={{ marginLeft: '0.5rem' }}>
                         <input
                           type="radio"
