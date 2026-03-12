@@ -12,6 +12,7 @@ const sections = [
   { name: "Venue", href: "/venue" },
   { name: "Travel & Accommodations", href: "/travel" },
   { name: "Our Story", href: "/story" },
+  { name: "Registry", href: "/registry" },
 ];
 
 export default function Web() {

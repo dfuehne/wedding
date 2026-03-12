@@ -81,6 +81,11 @@ export default function Navbar() {
               Our Story
             </Link>
           </li>
+          <li>
+            <Link href="/registry" className="block px-2 py-1 hover:bg-[var(--darker-primary-color)] rounded">
+              Registry
+            </Link>
+          </li>
         </ul>
       </aside>
     </>
