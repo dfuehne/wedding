@@ -6,7 +6,7 @@ import { storage } from "@/lib/firebase";
 import Navbar from "@/components/Navbar/navbar";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import Image from "next/image";
-import Link from "next/link";
+import { Button } from "components/Button/Button"
 
 const fancyFont = Pinyon_Script({subsets: ['latin'], weight: '400' });
 
@@ -41,9 +41,17 @@ export default function VenuePage() {
           </div>
           <div className="flex justify-center">
             <div className="text-center mb-6 mt-6">
-                <Link href="https://www.honeyfund.com/site/fuehne-baker-09-04-2026" className={`text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight ${fancyFont.className} underline`}>
-                Click For Registry
-                </Link>
+                <h1 className={`text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight ${fancyFont.className}`}>
+                    Click for Registries!
+                </h1>
+                <div className="flex justify-center gap-4 mt-4">
+                  <Button href="https://www.honeyfund.com/site/fuehne-baker-09-04-2026">
+                    Cash
+                  </Button>
+                  <Button href="https://www.amazon.com/wedding/guest-view/1LR43V8D1ISLI">
+                    Amazon
+                  </Button>
+                </div>
             </div>
           </div>
             {photos[0] && (

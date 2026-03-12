@@ -244,7 +244,7 @@ export default function RSVP() {
               <div className="mt-4 text-center text-xl font-medium">
                 Thanks for submitting your RSVP! Check out our{" "}
                 <Link
-                  href="https://www.honeyfund.com/site/fuehne-baker-09-04-2026"
+                  href="/registry"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"
