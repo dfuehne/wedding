@@ -15,29 +15,39 @@ const protectedPaths = ["/",
                         "/states"]; // add any existing pages
 
 export function middleware(req: NextRequest) {
-  const url = req.nextUrl.clone();
+  // const url = req.nextUrl.clone();
 
-    // Check if the request is for a protected path
-  const isProtected = protectedPaths.some((path) =>
-    url.pathname === path || url.pathname.startsWith(path + "/")
-  );
+  //   // Check if the request is for a protected path
+  // const isProtected = protectedPaths.some((path) =>
+  //   url.pathname === path || url.pathname.startsWith(path + "/")
+  // );
 
-  // Protect only /secret pages
-  if (isProtected) {
-    const authCookie = req.cookies.get("protected-auth")?.value;
+  // // Protect only /secret pages
+  // if (isProtected) {
+  //   const authCookie = req.cookies.get("protected-auth")?.value;
 
-    if (authCookie !== PASSWORD) {
-      // redirect to login page
-      url.pathname = "/login";
-      url.searchParams.set("redirect", req.nextUrl.pathname);
-      return NextResponse.redirect(url);
-    }
+  //   if (authCookie !== PASSWORD) {
+  //     // redirect to login page
+  //     url.pathname = "/login";
+  //     url.searchParams.set("redirect", req.nextUrl.pathname);
+  //     return NextResponse.redirect(url);
+  //   }
+  // }
+  const pathname = req.nextUrl.pathname
+  if (pathname.toLowerCase() === "/rsvp" && pathname !== "/rsvp") {
+    const url = req.nextUrl.clone();
+    url.pathname = "/rsvp";
+    return NextResponse.redirect(url);
   }
-
   return NextResponse.next();
 }
 
-// Apply only to certain paths
+// // Apply only to certain paths
+// export const config = {
+//   matcher: ["/secret/:path*"], // all routes under /secret
+// };
+
+
 export const config = {
-  matcher: ["/secret/:path*"], // all routes under /secret
+  matcher: ["/:path*"],
 };
