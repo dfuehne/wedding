@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { db } from '@/lib/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 import Navbar from "@/components/Navbar/navbar";
+import Link from "next/link";
 
 type Person = {
   first: string;
@@ -89,7 +90,6 @@ export default function RSVP() {
     try {
       const partyRef = doc(db, 'rsvp', party.id);
       await updateDoc(partyRef, { people: party.people });
-      alert('RSVP successfully updated!');
       setSubmitted(true);
     } catch (err) {
       console.error(err);
@@ -241,9 +241,18 @@ export default function RSVP() {
               </div>
             )}
             {submitted && (
-              <p className="mt-2 text-xl font-medium">
-                Thanks for Submitting RSVP!
-              </p> 
+              <div className="mt-4 text-center text-xl font-medium">
+                Thanks for submitting your RSVP! Check out our{" "}
+                <Link
+                  href="https://www.honeyfund.com/site/fuehne-baker-09-04-2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Registry
+                </Link>
+                !
+              </div>
             )}
             </div>
           )}
