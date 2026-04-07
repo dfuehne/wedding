@@ -9,7 +9,6 @@ export async function generateStaticParams() {
   return members.map((m) => ({ slug: m.slug }));
 }
 
-// ✅ Keep it inline-typed — no extra interface
 export default async function GroomsmenPage({
   params,
 }: {
