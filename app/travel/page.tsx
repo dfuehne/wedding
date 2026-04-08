@@ -4,6 +4,14 @@ import Navbar from "@/components/Navbar/navbar";
 import Image from "next/image";
 import Link from "next/link";
 
+function ReservedBadge({ count }: { count: number }) {
+  return (
+    <span className="ml-2 inline-flex items-center rounded-full bg-[var(--darker-primary-color)] px-3 py-1 text-sm font-semibold text-[var(--background-color)]">
+      {count} available- contact us to claim
+    </span>
+  );
+}
+
 
 export default function VenuePage() {
   return (
@@ -34,12 +42,20 @@ export default function VenuePage() {
                 <div>
                     <p className="mt-2 text-2xl font-extrabold"> Lodging </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
-                    <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, book as soon as you can!</p>
+                    <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, plan early!</p>
+                    <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
+                    <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
+                    <p className="mt-2 text-xl font-medium"> 
+                    We have reserved several rooms and campsites for guests at some of the locations below.
+                    The number below indicates how many reservations we currently have available.
+                    If you'd like to claim one, please contact Zoe or Duncan and we’ll transfer the reservation to you.
+                    </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     <Link href={"https://www.airbnb.com"}>
-                        <span className="text-2xl font-extrabold cursor-pointer hover:underline transition">
+                        <p className="text-2xl font-extrabold cursor-pointer hover:underline transition">
                             AirBnb
-                        </span>
+                        </p>
+                        <ReservedBadge count={1} /> 
                         <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
                             <p className="text-xl font-medium cursor-pointer hover:underline transition"> Buena Vista is mainly an AirBnb town, this is probably the way to go</p>
                         <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
@@ -56,6 +72,14 @@ export default function VenuePage() {
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">
                             Super 8 By Wyndham Buena Vista
                         </p>
+                        <ReservedBadge count={4} />
+                        </Link>
+                        <div className="mt-8" />
+                        <Link href={"https://www.hotels.com/ho2874626176/the-lodge-at-poncha-springs-salida-united-states-of-america/"}>
+                        <p className="text-xl font-medium cursor-pointer hover:underline transition">
+                            The Lodge at Poncha Springs
+                        </p>
+                        <ReservedBadge count={4} />
                         </Link>
                         <div className="mt-8" />
                         <Link href={"https://surfhotel.com"}>
@@ -88,6 +112,7 @@ export default function VenuePage() {
                             <p className="text-xl font-medium cursor-pointer hover:underline transition">
                                 BV Overlook
                             </p>
+                            <ReservedBadge count={4} />
                         </Link>
                         <div className="mt-8" />
                         <Link href={"https://www.fs.usda.gov/r02/psicc/recreation/collegiate-peaks-campground"}>
