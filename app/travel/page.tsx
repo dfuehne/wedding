@@ -61,6 +61,11 @@ export default function VenuePage() {
                         <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     </Link>
                     <p className="mt-2 text-2xl font-extrabold"> Hotels </p>
+                    <Link href={"https://www.hotelplanner.com/EventPage8562900"}>
+                        <p className="text-xl text-blue-300 font-medium cursor-pointer hover:underline transition">
+                            Some discounted rates are available at this link
+                        </p>
+                    </Link>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
                         <Link href={"https://www.bestwestern.com/en_US/book/hotel-rooms.06164.html?iata=00170260&ssob=PSBM00199G&cid=PSBM00199G:google:Conversion_National_X_US_Google_BW_BW_BR_X_Consolidated_En_District1_CO_Tertiary:best%20western%20buena%20vista%20co&gclsrc=aw.ds&gad_source=1&gad_campaignid=21226517701&gbraid=0AAAAAD-tl1gU2oeOTj5zjRfWGXOtP2odt&gclid=Cj0KCQjwrJTGBhCbARIsANFBfgtR_T95yp81zKXLCDLgKxDHB6KW_OnA8z3mz4XoSYar1t7YID4ZIDgaAvfREALw_wcB"}>
                         <p className="text-xl font-medium cursor-pointer hover:underline transition">

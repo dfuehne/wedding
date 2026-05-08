@@ -39,6 +39,9 @@ export default function Web() {
             <h1 className="mb-6 text-2xl font-medium">
                     Buena Vista, Colorado
             </h1>
+            <h1 className="mb-6 text-2xl font-medium">
+                    Ceremony at 4:00 PM, Reception to follow
+            </h1>
 
                  {/* Firebase image */}
             <div className="mb-8 mt-8">
