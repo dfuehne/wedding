@@ -41,7 +41,10 @@ export default function BingoPage() {
 				const sessions = data.sessions ?? [];
 				setExistingSessions(sessions);
 				if (!savedSession && sessions.length > 0) {
-					setSelectedSession(sessions[0]);
+					const firstSession = sessions[0];
+					if (firstSession) {
+						setSelectedSession(firstSession);
+					}
 				}
 			} catch (error) {
 				console.error(error);

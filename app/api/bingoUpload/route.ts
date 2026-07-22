@@ -26,7 +26,10 @@ async function getBingoSessions() {
     delimiter: "/",
   });
 
-  const prefixes = Array.isArray(apiResponse.prefixes) ? apiResponse.prefixes : [];
+  const prefixesResponse = apiResponse as { prefixes?: string[] } | undefined;
+  const prefixes = Array.isArray(prefixesResponse?.prefixes)
+    ? prefixesResponse.prefixes
+    : [];
   const folderNames = prefixes
     .map((prefix) => prefix.replace("bingo-photos/", "").replace(/\/$/, ""))
     .filter(Boolean);
