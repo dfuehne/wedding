@@ -3,11 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar/navbar";
 
+type SessionMode = "existing" | "new";
+
 export default function BingoPage() {
 	const inputRef = useRef<HTMLInputElement | null>(null);
-	const [guestName, setGuestName] = useState("");
-	const [nameInput, setNameInput] = useState("");
-	const [nameLoaded, setNameLoaded] = useState(false);
+	const [sessionMode, setSessionMode] = useState<SessionMode | null>(null);
+	const [sessionName, setSessionName] = useState("");
+	const [selectedSession, setSelectedSession] = useState("");
+	const [newSessionName, setNewSessionName] = useState("");
+	const [existingSessions, setExistingSessions] = useState<string[]>([]);
+	const [sessionsLoaded, setSessionsLoaded] = useState(false);
 	const [uploading, setUploading] = useState(false);
 	const [message, setMessage] = useState(
 		"Take a photo for the bingo board and send it to Firebase."
@@ -15,34 +20,82 @@ export default function BingoPage() {
 	const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
 
 	useEffect(() => {
-		const savedName = window.sessionStorage.getItem("bingo-guest-name");
-		if (savedName) {
-			setGuestName(savedName);
-			setMessage(`Welcome back, ${savedName}.`);
+		const savedMode = window.sessionStorage.getItem("bingo-session-mode") as SessionMode | null;
+		const savedSession = window.sessionStorage.getItem("bingo-session-name");
+
+		if (savedMode && savedSession) {
+			setSessionMode(savedMode);
+			setSessionName(savedSession);
+			setSelectedSession(savedSession);
+			setMessage(`Welcome back to ${savedSession}.`);
 		}
-		setNameLoaded(true);
+
+		async function loadSessions() {
+			try {
+				const response = await fetch("/api/bingoUpload");
+				if (!response.ok) {
+					throw new Error("Failed to load sessions");
+				}
+
+				const data = (await response.json()) as { sessions?: string[] };
+				const sessions = data.sessions ?? [];
+				setExistingSessions(sessions);
+				if (!savedSession && sessions.length > 0) {
+					setSelectedSession(sessions[0]);
+				}
+			} catch (error) {
+				console.error(error);
+				setMessage("Could not load existing sessions.");
+			} finally {
+				setSessionsLoaded(true);
+			}
+		}
+
+		loadSessions();
 	}, []);
 
-	const handleNameSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const startExistingSession = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		const trimmedName = nameInput.trim();
-
-		if (!trimmedName) {
-			setMessage("Please enter your name to continue.");
+		if (!selectedSession) {
+			setMessage("Choose a session from the list.");
 			return;
 		}
 
-		window.sessionStorage.setItem("bingo-guest-name", trimmedName);
-		setGuestName(trimmedName);
-		setNameInput("");
-		setMessage(`Welcome, ${trimmedName}. You can start uploading photos.`);
+		window.sessionStorage.setItem("bingo-session-mode", "existing");
+		window.sessionStorage.setItem("bingo-session-name", selectedSession);
+		setSessionMode("existing");
+		setSessionName(selectedSession);
+		setMessage(`Using existing session ${selectedSession}.`);
 	};
 
-	const clearName = () => {
-		window.sessionStorage.removeItem("bingo-guest-name");
-		setGuestName("");
-		setMessage("Session name cleared. Please log in again.");
+	const startNewSession = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		const trimmedName = newSessionName.trim();
+
+		if (!trimmedName) {
+			setMessage("Please enter a session name to continue.");
+			return;
+		}
+
+		window.sessionStorage.setItem("bingo-session-mode", "new");
+		window.sessionStorage.setItem("bingo-session-name", trimmedName);
+		setSessionMode("new");
+		setSessionName(trimmedName);
+		setNewSessionName("");
+		setMessage(`Started a new session: ${trimmedName}.`);
+	};
+
+	const clearSession = () => {
+		window.sessionStorage.removeItem("bingo-session-mode");
+		window.sessionStorage.removeItem("bingo-session-name");
+		setSessionMode(null);
+		setSessionName("");
+		setSelectedSession("");
+		setNewSessionName("");
+		setUploadedUrl(null);
+		setMessage("Session cleared. Choose an option to begin.");
 	};
 
 	const openCamera = () => {
@@ -65,7 +118,7 @@ export default function BingoPage() {
 		try {
 			const formData = new FormData();
 			formData.append("file", file);
-			formData.append("name", guestName);
+			formData.append("name", sessionName);
 
 			const response = await fetch("/api/bingoUpload", {
 				method: "POST",
@@ -109,18 +162,73 @@ export default function BingoPage() {
 						Use your device camera to take a photo, then send it straight to Firebase Storage.
 					</p>
 
-					{!nameLoaded ? null : !guestName ? (
-						<form onSubmit={handleNameSubmit} className="mt-8 space-y-4">
-							<label className="block text-sm font-medium text-slate-700" htmlFor="guest-name">
-								Enter your name to start
+					{!sessionsLoaded ? null : !sessionMode ? (
+						<div className="mt-8 space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+							<p className="text-sm font-medium text-slate-700">
+								Do you want to continue an existing session or start a new one?
+							</p>
+							<div className="flex flex-col gap-3 sm:flex-row">
+								<button
+									type="button"
+									onClick={() => setSessionMode("existing")}
+									className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-700"
+								>
+									Select existing session
+								</button>
+								<button
+									type="button"
+									onClick={() => setSessionMode("new")}
+									className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-100"
+								>
+									Start new session
+								</button>
+							</div>
+						</div>
+					) : null}
+
+					{sessionMode === "existing" ? (
+						<form onSubmit={startExistingSession} className="mt-8 space-y-4">
+							<label className="block text-sm font-medium text-slate-700" htmlFor="existing-session">
+								Choose an existing session
+							</label>
+							<div className="flex flex-col gap-3 sm:flex-row">
+								<select
+									id="existing-session"
+									value={selectedSession}
+									onChange={(event) => setSelectedSession(event.target.value)}
+									className="w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm outline-none transition focus:border-slate-400"
+								>
+									{existingSessions.length > 0 ? null : (
+										<option value="">No existing sessions found</option>
+									)}
+									{existingSessions.map((session) => (
+										<option key={session} value={session}>
+											{session}
+										</option>
+									))}
+								</select>
+								<button
+									type="submit"
+									className="inline-flex items-center justify-center rounded-full bg-rose-700 px-6 py-3 text-sm font-medium text-white transition hover:bg-rose-600"
+								>
+									Use session
+								</button>
+							</div>
+						</form>
+					) : null}
+
+					{sessionMode === "new" ? (
+						<form onSubmit={startNewSession} className="mt-8 space-y-4">
+							<label className="block text-sm font-medium text-slate-700" htmlFor="new-session">
+								Name the new session
 							</label>
 							<div className="flex flex-col gap-3 sm:flex-row">
 								<input
-									id="guest-name"
+									id="new-session"
 									type="text"
-									value={nameInput}
-									onChange={(event) => setNameInput(event.target.value)}
-									placeholder="Your name"
+									value={newSessionName}
+									onChange={(event) => setNewSessionName(event.target.value)}
+									placeholder="New session name"
 									className="w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm outline-none ring-0 transition placeholder:text-slate-400 focus:border-slate-400"
 								/>
 								<button
@@ -131,34 +239,36 @@ export default function BingoPage() {
 								</button>
 							</div>
 						</form>
-					) : (
+					) : null}
+
+					{sessionName ? (
 						<div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-900">
 							<span>
-								Logged in as <strong>{guestName}</strong>
+								Using session <strong>{sessionName}</strong>
 							</span>
 							<button
 								type="button"
-								onClick={clearName}
+								onClick={clearSession}
 								className="rounded-full border border-rose-200 px-3 py-1.5 text-xs font-medium text-rose-800 transition hover:bg-rose-100"
 							>
-								Change name
+								Change session
 							</button>
 						</div>
-					)}
+					) : null}
 
 					<div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
 						<button
 							type="button"
 							onClick={openCamera}
-							disabled={uploading || !guestName}
+							disabled={uploading || !sessionName}
 							className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
 						>
 							{uploading ? "Uploading..." : "Upload Photo"}
 						</button>
 						<p className="text-sm text-slate-500">
-							{guestName
+							{sessionName
 								? "Camera will open on phones when available."
-								: "Log in with your name before uploading."}
+								: "Choose or create a session before uploading."}
 						</p>
 					</div>
 
@@ -167,7 +277,7 @@ export default function BingoPage() {
 						type="file"
 						accept="image/*"
 						capture="environment"
-						onChange={guestName ? handleFileChange : undefined}
+						onChange={sessionName ? handleFileChange : undefined}
 						className="hidden"
 					/>
 

@@ -13,6 +13,45 @@ function buildUploadPath(name: string, fileName: string) {
   return `bingo-photos/${safeName}/${Date.now()}-${safeFileName}`;
 }
 
+async function getBingoSessions() {
+  const bucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+
+  if (!bucketName) {
+    return [];
+  }
+
+  const bucket = adminStorage.bucket(bucketName);
+  const [files, , apiResponse] = await bucket.getFiles({
+    prefix: "bingo-photos/",
+    delimiter: "/",
+  });
+
+  const prefixes = Array.isArray(apiResponse.prefixes) ? apiResponse.prefixes : [];
+  const folderNames = prefixes
+    .map((prefix) => prefix.replace("bingo-photos/", "").replace(/\/$/, ""))
+    .filter(Boolean);
+
+  const fileFolders = files
+    .map((file) => file.name)
+    .filter((name) => name.startsWith("bingo-photos/") && name.split("/").length >= 3)
+    .map((name) => name.split("/")[1])
+    .filter(Boolean);
+
+  return Array.from(new Set([...folderNames, ...fileFolders])).sort((a, b) =>
+    a.localeCompare(b)
+  );
+}
+
+export async function GET() {
+  try {
+    const sessions = await getBingoSessions();
+    return NextResponse.json({ sessions });
+  } catch (error) {
+    console.error("Failed to load bingo sessions:", error);
+    return NextResponse.json({ sessions: [] }, { status: 500 });
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -43,7 +82,7 @@ export async function POST(request: Request) {
     }
 
     const bucket = adminStorage.bucket(bucketName);
-  const filePath = buildUploadPath(name, file.name);
+    const filePath = buildUploadPath(name, file.name);
     const fileBuffer = Buffer.from(await file.arrayBuffer());
 
     const uploadedFile = bucket.file(filePath);
