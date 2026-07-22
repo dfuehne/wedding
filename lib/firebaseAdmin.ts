@@ -1,5 +1,6 @@
-import { cert, getApps, initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 if (!getApps().length) {
   initializeApp({
@@ -12,3 +13,4 @@ if (!getApps().length) {
 }
 
 export const adminDb = getFirestore();
+export const adminStorage = getStorage();
