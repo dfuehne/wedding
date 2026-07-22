@@ -45,10 +45,15 @@ export default function VenuePage() {
                     <p className="mt-2 text-xl font-medium"> September 4 is a holiday weekend, plan early!</p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" /> 
+                    <Link href={"prebooked.png"}>
+                        <p className="text-2xl font-bold cursor-pointer hover:underline transition">
+                            We have reserved several rooms and campsites for guests at some of the locations below (click for more info).
+                        </p>
+                    </Link>
                     <p className="mt-2 text-xl font-medium"> 
-                    We have reserved several rooms and campsites for guests at some of the locations below.
-                    The number below indicates how many reservations we currently have available.
-                    If you'd like to claim one, please contact Zoe or Duncan and we’ll transfer the reservation to you.
+                        
+                        The number below indicates how many reservations we currently have available.
+                        If you'd like to claim one, please contact Zoe or Duncan and we’ll transfer the reservation to you.
                     </p>
                     <hr className="border-gray-300 w-full max-w-md mx-auto my-8" />
                     <Link href={"https://www.airbnb.com"}>
