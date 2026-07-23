@@ -122,7 +122,7 @@ export default function VenuePage() {
                             <p className="text-xl font-medium cursor-pointer hover:underline transition">
                                 BV Overlook
                             </p>
-                            <ReservedBadge count={4} />
+                            <ReservedBadge count={3} />
                         </Link>
                         <div className="mt-8" />
                         <Link href={"https://www.fs.usda.gov/r02/psicc/recreation/collegiate-peaks-campground"}>
