@@ -2,6 +2,7 @@
 
 import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/Navbar/navbar";
+import Link from "next/link";
 
 type SessionMode = "existing" | "new";
 
@@ -623,7 +624,29 @@ export default function BingoPage() {
 								<button type="button" onClick={() => setSelectedChallenge(null)} className="rounded-full border border-stone-200 px-3 py-1 text-sm font-medium text-stone-600 transition hover:bg-stone-100 hover:text-stone-900">Close</button>
 							</div>
 
-							<p id="bingo-challenge-description" className="mt-5 text-base leading-7 text-stone-700">{selectedChallenge.description}</p>
+							{selectedChallenge.challengeID == "chal11" && (
+                                <div>
+                                    <p id="bingo-challenge-description" className="mt-5 text-base leading-7 text-stone-700">{selectedChallenge.description}</p>
+									<Link href="https://www.instagram.com/reel/DPIGZv1jqtj/?igsh=cGpxZzFnYnZpeGxy" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-full bg-gray-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-600">
+                                        Video 1
+                                    </Link>
+									<Link href="https://www.instagram.com/reel/DPZ0yQ7Dg5E/?igsh=d2l2OXQxcGFhMDJ6" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-full bg-gray-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-600">
+                                        Video 2
+                                    </Link>
+									<Link href="https://www.instagram.com/reel/DPnFiRQjtWn/?igsh=azBqbTg2cG9yenF3" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-full bg-gray-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-600">
+                                        Video 3
+                                    </Link>
+									<Link href="https://www.instagram.com/reel/DSfoCAtD1vh/?igsh=MTBteHgyMTltcWZjOQ==" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-full bg-gray-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-600">
+                                        Video 4
+                                    </Link>
+									<Link href="https://www.instagram.com/reel/DSqMEPtESpi/?igsh=YzM2Zm1mdDlsdm5s" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center rounded-full bg-gray-700 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-600">
+                                        Video 5
+                                    </Link>
+                                </div>
+							)}
+							{selectedChallenge.challengeID !== "chal11" && (
+								<p id="bingo-challenge-description" className="mt-5 text-base leading-7 text-stone-700">{selectedChallenge.description}</p>
+							)}
 
 							<div className="mt-6 flex flex-col gap-3">
 								{completedChallengePhotos[selectedChallenge.challengeID] ? (
