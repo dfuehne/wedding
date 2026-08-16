@@ -581,7 +581,7 @@ export default function BingoPage() {
 								</div>
 							</section>
 
-							<section className="grid gap-3 sm:grid-cols-5">
+							<section className="grid grid-cols-5 gap-1 sm:gap-3">
 								{board.length === 25 ? (
 									board.map((challenge, index) => {
 										const isCenter = index === 12;
@@ -591,11 +591,11 @@ export default function BingoPage() {
 												key={`${challenge.challengeID}-${index}`}
 												type="button"
 												onClick={() => setSelectedChallenge(challenge)}
-												className={`group flex min-h-28 flex-col justify-between rounded-3xl border px-4 py-4 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 ${isCompleted ? "border-emerald-400 bg-emerald-100 text-emerald-950" : isCenter ? "border-amber-500 bg-amber-100 text-amber-950" : "border-stone-200 bg-white/90 text-stone-900"}`}
+												className={`group flex aspect-square min-h-0 flex-col justify-between rounded-2xl border px-1.5 py-1.5 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 sm:rounded-3xl sm:px-4 sm:py-4 ${isCompleted ? "border-emerald-400 bg-emerald-100 text-emerald-950" : isCenter ? "border-amber-500 bg-amber-100 text-amber-950" : "border-stone-200 bg-white/90 text-stone-900"}`}
 												aria-label={`Open challenge details for ${challenge.displayName}`}
 											>
-												<span className="mt-3 text-lg font-semibold leading-snug sm:text-xl">{challenge.displayName}</span>
-												<span className={`mt-4 text-xs font-medium uppercase tracking-[0.25em] ${isCompleted ? "text-emerald-700" : "text-stone-400"}`}>{isCompleted ? "Completed" : "Tap for details"}</span>
+												<span className="mt-1 text-[0.58rem] font-semibold leading-tight sm:mt-3 sm:text-lg sm:leading-snug">{challenge.displayName}</span>
+												<span className={`mt-1 text-[0.45rem] font-medium uppercase tracking-[0.15em] sm:mt-4 sm:text-xs sm:tracking-[0.25em] ${isCompleted ? "text-emerald-700" : "text-stone-400"}`}>{isCompleted ? "Completed" : "Tap for details"}</span>
 											</button>
 										);
 									})
