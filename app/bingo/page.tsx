@@ -554,7 +554,7 @@ export default function BingoPage() {
 
 							{sessionMode === "new" ? (
 								<form onSubmit={startNewSession} className="space-y-4 rounded-[2rem] border border-white/70 bg-white/80 px-5 py-6 shadow-[0_18px_60px_rgba(94,68,34,0.08)] sm:px-8">
-									<label className="block text-sm font-medium text-stone-700" htmlFor="new-session">Name the new session</label>
+									<label className="block text-sm font-medium text-stone-700" htmlFor="new-session">Enter your name to start a new session!</label>
 									<div className="flex flex-col gap-3 sm:flex-row">
 										<input id="new-session" type="text" value={newSessionName} onChange={(event) => setNewSessionName(event.target.value)} placeholder="New session name" className="w-full rounded-full border border-stone-200 bg-white px-5 py-3 text-sm outline-none ring-0 transition placeholder:text-stone-400 focus:border-stone-400" />
 										<button type="submit" className="inline-flex items-center justify-center rounded-full bg-amber-700 px-6 py-3 text-sm font-medium text-white transition hover:bg-amber-600">Start session</button>
